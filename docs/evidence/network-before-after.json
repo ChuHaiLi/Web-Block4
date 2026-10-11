@@ -1,0 +1,117 @@
+{
+  "browser": "154.0.8037.98",
+  "url": "http://127.0.0.1:4173",
+  "before": {
+    "requests": [
+      {
+        "type": "document",
+        "url": "http://127.0.0.1:4173/",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:4173/assets/index-BqE6sAyh.js",
+        "method": "GET"
+      },
+      {
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:4173/assets/index-BMUdRcg9.css",
+        "method": "GET"
+      },
+      {
+        "type": "other",
+        "url": "http://127.0.0.1:4173/favicon.svg",
+        "method": "GET"
+      }
+    ],
+    "network": [
+      {
+        "type": "Document",
+        "url": "http://127.0.0.1:4173/",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:4173/assets/index-BqE6sAyh.js",
+        "method": "GET"
+      },
+      {
+        "type": "Stylesheet",
+        "url": "http://127.0.0.1:4173/assets/index-BMUdRcg9.css",
+        "method": "GET"
+      },
+      {
+        "type": "Other",
+        "url": "http://127.0.0.1:4173/favicon.svg",
+        "method": "GET"
+      }
+    ],
+    "values": {
+      "name": "Nguyễn Minh Anh CSR",
+      "email": "csr.demo@example.com",
+      "className": "24C11"
+    }
+  },
+  "after": {
+    "requests": [
+      {
+        "type": "document",
+        "url": "http://127.0.0.1:4173/",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:4173/assets/index-BqE6sAyh.js",
+        "method": "GET"
+      },
+      {
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:4173/assets/index-BMUdRcg9.css",
+        "method": "GET"
+      },
+      {
+        "type": "other",
+        "url": "http://127.0.0.1:4173/favicon.svg",
+        "method": "GET"
+      }
+    ],
+    "network": [
+      {
+        "type": "Document",
+        "url": "http://127.0.0.1:4173/",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:4173/assets/index-BqE6sAyh.js",
+        "method": "GET"
+      },
+      {
+        "type": "Stylesheet",
+        "url": "http://127.0.0.1:4173/assets/index-BMUdRcg9.css",
+        "method": "GET"
+      },
+      {
+        "type": "Other",
+        "url": "http://127.0.0.1:4173/favicon.svg",
+        "method": "GET"
+      }
+    ],
+    "values": {
+      "name": "",
+      "email": "",
+      "className": ""
+    },
+    "newStudent": [
+      "02410011",
+      "Nguyễn Minh Anh CSR",
+      "csr.demo@example.com",
+      "24C11",
+      "Công nghệ thông tin"
+    ]
+  },
+  "documentCountBefore": 1,
+  "documentCountAfter": 1,
+  "submitRequests": [],
+  "unchangedTimeOrigin": true
+}

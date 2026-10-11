@@ -1,0 +1,4 @@
+npm ci --offline --no-audit --no-fund --no-update-notifier --cache .tools/npm-cache
+Exit code: 0
+Added 19 packages in 4s.
+Npm warned that esbuild postinstall was not approved; bundled optional Windows binary is present; subsequent build succeeded.

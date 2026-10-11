@@ -1,0 +1,78 @@
+[
+  {
+    "page": 1,
+    "text": ""
+  },
+  {
+    "page": 2,
+    "text": "BROWSER TỰ\nTẠO VÀ CẬP\nNHẬT UI NHƯ\nTHẾ NÀO?\nN Ộ I D U N G B U Ổ I H Ọ C\nCâu hỏi và mental model\nKhái niệm và ví dụ\nBài tập\nNghiệm thu và trình bày\nTổng kết và đối chiếu\n01\n02\n03\n04\n05"
+  },
+  {
+    "page": 3,
+    "text": "CÂU HỎI LỚNCÂU HỎI LỚN\nĐiều gì thay đổi nếu browser chạy JavaScript để tạo và cập nhật phần lớn UI?\nPhát triển ứng dụng web 3"
+  },
+  {
+    "page": 4,
+    "text": "MỤC TIÊU ĐẦU RA\nMô tả được HTML\nSHELL →\nJAVASCRIPT → UI\nPhân biệt\ncomponent, props\nvà state ban đầu\nCập nhật danh\nsách mà không\nreload toàn trang\nQuan sát state\nbằng React\nDevTools hoặc log\n01 02 03 04\nPhát triển ứng dụng web 4"
+  },
+  {
+    "page": 5,
+    "text": "THUẬT NGỮ CỐT LÕI\nTHUẬT NGỮ NGHĨA DÙNG TRONG BLOCK\nComponent Đơn vị giao diện có input và output\nProps Dữ liệu cha truyền vào component\nState Dữ liệu thay đổi làm UI render lại\nEvent Tín hiệu người dùng kích hoạt cập nhật\nPhát triển ứng dụng web 5"
+  },
+  {
+    "page": 6,
+    "text": "MENTAL MODEL\n6"
+  },
+  {
+    "page": 7,
+    "text": "SO SÁNH\nSSR Student List\nSubmit form gửi request mới—\nServer tạo lại toàn bộ HTML—\nBrowser nhận một document mới—\nCSR Student List\nEvent handler cập nhật state—\nFramework render phần UI liên quan—\nDocument không reload toàn trang—\nPhát triển ứng dụng web 7"
+  },
+  {
+    "page": 8,
+    "text": "VÍ DỤ TRỌNG TÂM\n\n\nfunction StudentList() {\nconst [students, setStudents] = useState(seed);\nfunction addStudent(student) {\nsetStudents(current => [==.current, student]);\n}\nreturn <StudentPage students={students} onAdd={addStudent} =>;\n}\nuseState giữ danh sách hiện tại—\nEvent tạo array mới thay vì mutate state—\nProps nối state với component con—\nPhát triển ứng dụng web 8"
+  },
+  {
+    "page": 9,
+    "text": "LỖI THƯỜNG GẶP\nMutate array khiến cập nhật UI khó dự đoán\nDùng biến thường thay cho state\nĐặt mọi UI vào một component lớn\nForm submit làm reload vì thiếu preventDefault\n01\n02\n03\n04\nPhát triển ứng dụng web 9"
+  },
+  {
+    "page": 10,
+    "text": "20–60 PHÚT\nBÀI TẬP\nXây cùng Student List dạng CSR, thêm Student không reload toàn trang."
+  },
+  {
+    "page": 11,
+    "text": "DỮ LIỆU VÀ ĐIỀU KIỆN BAN ĐẦU\nStarter React hoặc\nframework\ncomponent tương\nđương\nSeed data giống\nhệt Block 1\nStudent gồm id ,\nname , email\nKhông cần API\nhoặc database\ntrong block này\n01 02 03 04\nPhát triển ứng dụng web 11"
+  },
+  {
+    "page": 12,
+    "text": "YÊU CẦU CHỨC NĂNG\nRender Student List từ state\nForm Add Student dùng input được kiểm soát\nSubmit cập nhật UI ở client\nTrang không reload khi thêm Student\n01\n02\n03\n04\nPhát triển ứng dụng web 12"
+  },
+  {
+    "page": 13,
+    "text": "QUY TRÌNH 40 PHÚT\n01\nMÔ HÌNH STATE —\nChọn owner cho\nstudents và form\n02\nTÁCH COMPONENT —\nList, row và add form\n03\nNỐI EVENT — Đẩy\nStudent mới lên\nowner\n04\nQUAN SÁT — Kiểm tra\nreload và state\ntransition\nPhát triển ứng dụng web 13"
+  },
+  {
+    "page": 14,
+    "text": "TIÊU CHÍ NGHIỆM THU\nStudent mới xuất\nhiện ngay sau\nsubmit\nNetwork không có\ndocument request\nmới\nForm được reset\nsau khi thêm\nMã chỉ có một\nnguồn state cho\ndanh sách\n01 02 03 04\nPhát triển ứng dụng web 14"
+  },
+  {
+    "page": 15,
+    "text": "BẰNG CHỨNG PHẢI NỘP\nSơ đồ component và state owner\nRecording thao tác thêm Student\nNetwork trước và sau submit\nMột đoạn code agent cần nhóm giải thích\n01\n02\n03\n04\nPhát triển ứng dụng web 15"
+  },
+  {
+    "page": 16,
+    "text": "TRÌNH BÀY VÀ TỔNG KẾT\nHai nhóm ngẫu nhiên · 10 phút mỗi nhóm"
+  },
+  {
+    "page": 17,
+    "text": "KỊCH BẢN DEMO 10 PHÚT\nMở Network với bộ\nlọc Doc\nThêm Student mới Chỉ ra component\ngiữ state\nSo sánh với POST\nform ở Block 1\n01 02 03 04\nPhát triển ứng dụng web 17"
+  },
+  {
+    "page": 18,
+    "text": "ĐIỀU CẦN NHỚ\nCSR chạy\nJavaScript để tạo\nvà cập nhật UI\nState thay đổi dẫn\nđến render lại\ncomponent\nEvent nối thao tác\nngười dùng với\nstate\nRendering model\nkhông đồng nhất\nvới tên framework\n01 02 03 04\nPhát triển ứng dụng web 18"
+  },
+  {
+    "page": 19,
+    "text": ""
+  }
+]

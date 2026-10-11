@@ -1,0 +1,24 @@
+
+> student-management-csr@1.0.0 test
+> node --test tests/*.test.js
+
+✔ seed: 40 hồ sơ đầy đủ, ID và email duy nhất (1.8886ms)
+✔ chuẩn hóa tên và dùng majorCode của lớp 24C11 (3.89ms)
+✔ cấp MSSV theo khóa, giữ số 0 ở đầu (0.2859ms)
+✔ không thay đổi seed, input hoặc hồ sơ cũ (0.5237ms)
+✔ từ chối tên trắng, email sai và lớp ngoài danh mục (0.5444ms)
+✔ từ chối email trùng kể cả khác hoa/thường và có khoảng trắng (0.1362ms)
+✔ chặn dữ liệu vượt độ dài (0.1199ms)
+✔ hết mã một khóa không ảnh hưởng khóa khác (0.1747ms)
+✔ metadata chỉ giữ số thứ tự theo khóa, không mutate hồ sơ seed (0.3205ms)
+✔ xóa MSSV seed cao nhất vẫn không cấp lại mã đó trong phiên (0.2621ms)
+✔ xóa hết danh sách không làm mất bộ đếm và có thể dùng lại email (0.1776ms)
+✔ mã cuối đã xóa vẫn được coi là đã cấp; khóa khác tiếp tục thêm (0.1219ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.7332

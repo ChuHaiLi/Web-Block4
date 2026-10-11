@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-11T10:47:01.884Z",
+  "scope": "All regular files recursively, including .git when present; excluding node_modules, symlinks and directory timestamps",
+  "phase": "Delete Student extension",
+  "projects": {
+    "Block3": {
+      "filesBefore": 350,
+      "filesAfter": 350,
+      "manifestHashBefore": "51f6592d107b2b26beceaa394d7ba9ccd61c5f2eb6494ff69aa3d96c0dd23d27",
+      "manifestHashAfter": "51f6592d107b2b26beceaa394d7ba9ccd61c5f2eb6494ff69aa3d96c0dd23d27",
+      "changes": [],
+      "unchanged": true
+    },
+    "Block1_2": {
+      "filesBefore": 59,
+      "filesAfter": 59,
+      "manifestHashBefore": "74b883498bc58f80df0e147590b0957077e796895d76f74a2c6010f750c92b8b",
+      "manifestHashAfter": "74b883498bc58f80df0e147590b0957077e796895d76f74a2c6010f750c92b8b",
+      "changes": [],
+      "unchanged": true
+    }
+  },
+  "originalFiles": {
+    "pdf": {
+      "before": "a49fd8f16bde5e95b43d7adf519ef4b1d87435f5b8c59242887375eac7a6056d",
+      "after": "a49fd8f16bde5e95b43d7adf519ef4b1d87435f5b8c59242887375eac7a6056d",
+      "unchanged": true,
+      "baseline": "Original project implementation manifest"
+    },
+    "task": {
+      "before": "62ff3542bb22181eb0da562b469c76d99c451e8fada2038207de01ca1c528048",
+      "after": "62ff3542bb22181eb0da562b469c76d99c451e8fada2038207de01ca1c528048",
+      "unchanged": true,
+      "baseline": "Original project implementation manifest"
+    }
+  },
+  "copiedData": [
+    {
+      "file": "students.seed.json",
+      "original": "287559c47c9485d6beff7aee6dbccaf12a7a2c7691fc532f17859d91a605e66c",
+      "copy": "287559c47c9485d6beff7aee6dbccaf12a7a2c7691fc532f17859d91a605e66c",
+      "identicalBytes": true
+    },
+    {
+      "file": "classes.json",
+      "original": "96484ac457d29c04b928aa21c424bad01b135c8de70fd027efb17814e4325bab",
+      "copy": "96484ac457d29c04b928aa21c424bad01b135c8de70fd027efb17814e4325bab",
+      "identicalBytes": true
+    },
+    {
+      "file": "majors.json",
+      "original": "0a1aff817c4692edc8d51e0b52630993d2d6d3265b658bce62306373630f6b54",
+      "copy": "0a1aff817c4692edc8d51e0b52630993d2d6d3265b658bce62306373630f6b54",
+      "identicalBytes": true
+    }
+  ],
+  "status": "PASS"
+}

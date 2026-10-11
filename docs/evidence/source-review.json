@@ -1,0 +1,89 @@
+{
+  "reviewedAt": "2026-10-11T10:47:02.163Z",
+  "phase": "Delete Student extension",
+  "files": [
+    {
+      "file": "src/App.jsx",
+      "sha256": "ec38a4b314931d06ab0ee0100faf1197af3408d7760728f1977008cfc1fa300c"
+    },
+    {
+      "file": "src/components/AddStudentForm.jsx",
+      "sha256": "51ebd21f8672d9c832c4c3fe0f4eb037e50a4601d4558d6a5990682b632910f6"
+    },
+    {
+      "file": "src/components/StudentList.jsx",
+      "sha256": "4da2d3fadc5bb216118146f55f71d01d0fe02b292bcce949a86c0859a30725b5"
+    },
+    {
+      "file": "src/components/StudentRow.jsx",
+      "sha256": "b180317a64fd1953621039be8cb472708b8e26a4b73ff1597f6a2dd9555bdb49"
+    },
+    {
+      "file": "src/components/DeleteStudentDialog.jsx",
+      "sha256": "6c813546660c9c71fa05bca2200e3a9aaa5e456e300d13260f1aba3d035da838"
+    },
+    {
+      "file": "src/components/SiteHeader.jsx",
+      "sha256": "1f8f74adfd2a1ce0fcdba62755a337394921482d9709705244e9c3126759857d"
+    },
+    {
+      "file": "src/utils/student.js",
+      "sha256": "29becafef0f510e29df2fdf0df4102b88d42866fc71fbc1809e5ae784b50df36"
+    },
+    {
+      "file": "src/main.jsx",
+      "sha256": "812ea64be06a756bf9658877f61dfa1da32d6f129c0c965edae160bcbea87a02"
+    }
+  ],
+  "studentsStateOwners": [
+    {
+      "file": "src/App.jsx",
+      "line": 11
+    }
+  ],
+  "immutableUpdateLocations": [
+    {
+      "file": "src/App.jsx",
+      "line": 24
+    },
+    {
+      "file": "src/App.jsx",
+      "line": 39
+    }
+  ],
+  "preventDefaultLocations": [
+    {
+      "file": "src/components/AddStudentForm.jsx",
+      "line": 20
+    },
+    {
+      "file": "src/components/DeleteStudentDialog.jsx",
+      "line": 17
+    },
+    {
+      "file": "src/components/DeleteStudentDialog.jsx",
+      "line": 22
+    }
+  ],
+  "apiCallLocations": [],
+  "controlledFormFields": [
+    "name",
+    "email",
+    "className"
+  ],
+  "propFlow": [
+    "App → StudentList: students, createdId, onRequestDelete",
+    "StudentList → StudentRow: student, isNew, onRequestDelete, key=id",
+    "App → AddStudentForm: onAdd=addStudent",
+    "App → DeleteStudentDialog: student from students.find, onConfirm=deleteStudent, onCancel"
+  ],
+  "callbackFlow": [
+    "AddStudentForm.handleSubmit → onAdd(values) → App.addStudent",
+    "StudentRow button → onRequestDelete(id) → App.requestDelete",
+    "DeleteStudentDialog.handleSubmit → onConfirm() → App.deleteStudent; cancel/Escape → onCancel"
+  ],
+  "noDirectStudentsMutation": true,
+  "metadata": "App issuedCounters ref stores highest sequence by cohort only; no student records. pendingStudent derived with find, no separate state.",
+  "method": "Manual review of all application source; locations collected from actual files. Runtime checked separately in browser reports.",
+  "status": "PASS"
+}

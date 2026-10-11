@@ -1,0 +1,13 @@
+
+> student-management-csr@1.0.0 build
+> vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 38 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.74 kB │ gzip:  0.44 kB
+dist/assets/index-BMUdRcg9.css   11.48 kB │ gzip:  3.20 kB
+dist/assets/index-BqE6sAyh.js   210.53 kB │ gzip: 65.69 kB
+✓ built in 807ms

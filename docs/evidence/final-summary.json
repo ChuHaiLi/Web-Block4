@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-11T10:49:29.374Z",
+  "phase": "Delete Student extension",
+  "build": "PASS: exit 0, no warnings",
+  "unitTests": {
+    "pass": 12,
+    "fail": 0,
+    "source": "unit-test-output.txt"
+  },
+  "chromeDev": {
+    "groupsPass": 18,
+    "groupsFail": 0
+  },
+  "chromeProduction": {
+    "groupsPass": 18,
+    "groupsFail": 0
+  },
+  "pdfAcceptance": {
+    "studentAppears": "PASS",
+    "noNewDocumentRequest": "PASS: actual Doc 1→1 with Keep log",
+    "formReset": "PASS",
+    "singleStudentsStateOwner": "PASS: App"
+  },
+  "delete": {
+    "status": "PASS",
+    "confirmationAndCancel": "PASS: correct five fields; cancel/Escape unchanged",
+    "immutable": "PASS: filter in App; remaining records/order unchanged",
+    "sameDocumentNoApi": "PASS: CDP Document count/timeOrigin unchanged; no Document/Fetch/XHR",
+    "emptyListAndAddRegression": "PASS",
+    "idReuse": "PASS: issued counters in App ref retained in session",
+    "pdfRequirement": false
+  },
+  "evidence": {
+    "diagram": "COMPLETE: includes Delete callbacks/owner",
+    "recording": "COMPLETE: live Chrome Add recording, 13.48s, 3 frames visually verified",
+    "devtoolsBeforeAfter": "COMPLETE: actual Network/Doc for Add, recreated on final source",
+    "deleteScreenshotsAndCdp": "COMPLETE: actual production screenshots + CDP JSON",
+    "deleteRecording": "NOT VERIFIED: not captured; optional extension evidence",
+    "codeExplanation": "COMPLETE: Vietnamese"
+  },
+  "preservation": "PASS",
+  "documentationLinks": "PASS",
+  "unverified": [
+    "React DevTools extension",
+    "Firefox/Safari",
+    "Legacy dialog/Popover fallback",
+    "Physical devices/screen reader",
+    "Group oral presentation/understanding and artifact submission"
+  ],
+  "serversStopped": true
+}

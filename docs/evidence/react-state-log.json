@@ -1,0 +1,35 @@
+{
+  "method": "Chrome Debugger breakpoint at App render; evaluate students in actual paused App scope, no source modification",
+  "observedState": [
+    {
+      "owner": "App",
+      "count": 40,
+      "firstId": "02400001",
+      "lastId": "02410010",
+      "createdId": ""
+    },
+    {
+      "owner": "App",
+      "count": 40,
+      "firstId": "02400001",
+      "lastId": "02410010",
+      "createdId": ""
+    },
+    {
+      "owner": "App",
+      "count": 41,
+      "firstId": "02400001",
+      "lastId": "02410011",
+      "createdId": "02410011"
+    },
+    {
+      "owner": "App",
+      "count": 41,
+      "firstId": "02400001",
+      "lastId": "02410011",
+      "createdId": "02410011"
+    }
+  ],
+  "stateLogErrors": [],
+  "status": "PASS"
+}

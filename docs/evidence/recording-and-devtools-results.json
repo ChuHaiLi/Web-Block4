@@ -1,0 +1,42 @@
+{
+  "recordedAt": "2026-10-11T10:45:48.643Z",
+  "source": "Live Google Chrome, Playwright video; actual Chrome DevTools frontend, Network/Doc",
+  "browser": "154.0.8037.98",
+  "url": "http://127.0.0.1:5173",
+  "keepLog": true,
+  "disableCache": true,
+  "before": {
+    "studentCount": 40,
+    "docCount": 1,
+    "timeOrigin": 1791715535536.3
+  },
+  "after": {
+    "studentCount": 41,
+    "docCount": 1,
+    "timeOrigin": 1791715535536.3,
+    "lastRow": "02410011\tNguyễn Minh Anh CSR\tcsr.demo@example.com\t24C11\tCông nghệ thông tin\tXóa"
+  },
+  "reset": {
+    "name": "",
+    "email": "",
+    "className": ""
+  },
+  "checks": {
+    "newStudentImmediately": true,
+    "noNewDocumentRequest": true,
+    "sameDocument": true,
+    "formReset": true
+  },
+  "status": "PASS",
+  "recordingSession": {
+    "studentsBefore": 40,
+    "studentsAfter": 41,
+    "sameDocument": true,
+    "reset": {
+      "name": "",
+      "email": "",
+      "className": ""
+    },
+    "edited": false
+  }
+}

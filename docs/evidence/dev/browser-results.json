@@ -1,0 +1,82 @@
+{
+  "testedAt": "2026-10-11T10:45:48.184Z",
+  "url": "http://127.0.0.1:5173",
+  "browser": "Google Chrome 154.0.8037.98",
+  "viewport": "1440×1000; 390×844; 320×640",
+  "checks": [
+    {
+      "name": "40 seed records đúng dữ liệu/thứ tự; HTTP trả HTML shell",
+      "status": "PASS"
+    },
+    {
+      "name": "Validation giữ dữ liệu khi lỗi và không thêm hồ sơ",
+      "status": "PASS"
+    },
+    {
+      "name": "Submit thêm ngay, nối cuối, không mutate 40 hồ sơ cũ",
+      "status": "PASS"
+    },
+    {
+      "name": "CDP Document count không tăng; không Fetch/XHR; document timeOrigin giữ nguyên",
+      "status": "PASS"
+    },
+    {
+      "name": "Controlled inputs reset cả ba trường; mở lại thấy form trống",
+      "status": "PASS"
+    },
+    {
+      "name": "Email trùng bị từ chối, giữ inputs để sửa",
+      "status": "PASS"
+    },
+    {
+      "name": "Submit bằng Enter, thêm liên tiếp, ID duy nhất và đúng thứ tự/khóa",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete: đúng hồ sơ xác nhận; mở/Hủy/Escape đều giữ nguyên danh sách",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete: chỉ xóa hồ sơ đã xác nhận, cập nhật số lượng; giữ hồ sơ/thứ tự còn lại",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete: không Document/Fetch/XHR mới, cùng document timeOrigin",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete + Add: email đã xóa dùng lại được; không tái cấp MSSV mới nhất; form vẫn reset",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete hết: empty state, Add vẫn hoạt động và không tái cấp mã seed/đã xóa",
+      "status": "PASS"
+    },
+    {
+      "name": "Reload chủ động khởi tạo lại đúng 40 seed records sau Add/Delete",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Delete 390px: dialog trong viewport, cuộn được, Hủy giữ danh sách",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile 390px: không tràn trang, bảng cuộn ngang, popup trong viewport, Esc đóng",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Delete 320px: dialog trong viewport, cuộn được, Hủy giữ danh sách",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile 320px: không tràn trang, bảng cuộn ngang, popup trong viewport, Esc đóng",
+      "status": "PASS"
+    },
+    {
+      "name": "Không có pageerror hoặc console.error",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}

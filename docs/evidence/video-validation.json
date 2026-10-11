@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-11T10:48:30.895Z",
+  "source": "add-student.webm",
+  "duration": 13.48,
+  "width": 1440,
+  "height": 1000,
+  "decodedAndVisuallyInspectedAtSeconds": [
+    5,
+    9,
+    11.5
+  ],
+  "status": "PASS"
+}

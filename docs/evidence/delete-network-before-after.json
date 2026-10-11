@@ -1,0 +1,17 @@
+{
+  "url": "http://127.0.0.1:4173",
+  "browser": "154.0.8037.98",
+  "before": {
+    "rows": 43,
+    "docCount": 1,
+    "timeOrigin": 1791715527758.8
+  },
+  "after": {
+    "rows": 42,
+    "docCount": 1,
+    "timeOrigin": 1791715527758.8
+  },
+  "deletedId": "02410010",
+  "requests": [],
+  "preservedOtherRecordsAndOrder": true
+}
