@@ -1,9 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import majors from '../data/majors.json' with { type: 'json' };
 
 export default function DeleteStudentDialog({ student, onConfirm, onCancel }) {
   const dialogRef = useRef(null);
   const cancelRef = useRef(null);
+  const savingRef = useRef(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
   const majorName = majors.find((major) => major.code === student.major)?.name || student.major;
 
   useEffect(() => {
@@ -13,14 +16,26 @@ export default function DeleteStudentDialog({ student, onConfirm, onCancel }) {
     return () => dialog.close();
   }, []);
 
-  function handleSubmit(event) {
-    event.preventDefault(); // Không submit form/navigate lên server.
-    onConfirm(); // App mới là component được cập nhật students.
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (savingRef.current) return;
+    savingRef.current = true;
+    setSaving(true);
+    setError('');
+    try {
+      const message = await onConfirm();
+      if (message) setError(message);
+    } catch {
+      setError('Không thể xóa sinh viên. Vui lòng thử lại.');
+    } finally {
+      savingRef.current = false;
+      setSaving(false);
+    }
   }
 
   function handleCancel(event) {
-    event.preventDefault(); // Escape cũng đi qua callback để đóng đúng React state.
-    onCancel();
+    event.preventDefault();
+    if (!savingRef.current) onCancel();
   }
 
   return (
@@ -36,13 +51,14 @@ export default function DeleteStudentDialog({ student, onConfirm, onCancel }) {
         <div><dt>Ngành học</dt><dd>{majorName}</dd></div>
       </dl>
       <div className="notice notice-error delete-warning" id="delete-warning">
-        <strong>Bạn có chắc chắn muốn xóa sinh viên này? Hành động này không thể hoàn tác trong phiên trang hiện tại.</strong>
+        <strong>Bạn có chắc chắn muốn xóa sinh viên này? Hành động này không thể hoàn tác.</strong>
       </div>
-      <form className="delete-form" onSubmit={handleSubmit} aria-describedby="delete-warning">
-        <button className="danger-button" type="submit">Xác nhận xóa</button>
-        <button ref={cancelRef} className="cancel-button" type="button" onClick={onCancel}>Hủy</button>
+      {error && <p className="notice notice-error" role="alert">{error}</p>}
+      <form aria-busy={saving} className="delete-form" onSubmit={handleSubmit} aria-describedby="delete-warning">
+        <button disabled={saving} className="danger-button" type="submit">{saving ? "Đang xóa…" : "Xác nhận xóa"}</button>
+        <button disabled={saving} ref={cancelRef} className="cancel-button" type="button" onClick={onCancel}>Hủy</button>
       </form>
-      <p className="delete-footnote">MSSV đã cấp sẽ không được sử dụng lại trong phiên trang. Reload sẽ khôi phục seed ban đầu.</p>
+      <p className="delete-footnote">Sinh viên đã xóa sẽ không xuất hiện lại khi tải lại trang. MSSV đã cấp không được sử dụng lại.</p>
     </dialog>
   );
 }

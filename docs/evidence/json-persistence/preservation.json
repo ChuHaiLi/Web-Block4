@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-11T12:31:38.470Z",
+  "scope": "Regular files incl Git metadata where present; excludes node_modules, symlinks, directory timestamps",
+  "oldProjects": {
+    "Block3": {
+      "filesBefore": 350,
+      "filesAfter": 350,
+      "differences": [],
+      "status": "PASS"
+    },
+    "Block1_2": {
+      "filesBefore": 59,
+      "filesAfter": 59,
+      "differences": [],
+      "status": "PASS"
+    }
+  },
+  "protectedFiles": {
+    "Block4_CSR_Assignment.pdf": {
+      "before": "a49fd8f16bde5e95b43d7adf519ef4b1d87435f5b8c59242887375eac7a6056d",
+      "after": "a49fd8f16bde5e95b43d7adf519ef4b1d87435f5b8c59242887375eac7a6056d",
+      "status": "PASS"
+    },
+    "src/data/students.seed.json": {
+      "before": "287559c47c9485d6beff7aee6dbccaf12a7a2c7691fc532f17859d91a605e66c",
+      "after": "287559c47c9485d6beff7aee6dbccaf12a7a2c7691fc532f17859d91a605e66c",
+      "status": "PASS"
+    },
+    "src/data/classes.json": {
+      "before": "96484ac457d29c04b928aa21c424bad01b135c8de70fd027efb17814e4325bab",
+      "after": "96484ac457d29c04b928aa21c424bad01b135c8de70fd027efb17814e4325bab",
+      "status": "PASS"
+    },
+    "src/data/majors.json": {
+      "before": "0a1aff817c4692edc8d51e0b52630993d2d6d3265b658bce62306373630f6b54",
+      "after": "0a1aff817c4692edc8d51e0b52630993d2d6d3265b658bce62306373630f6b54",
+      "status": "PASS"
+    }
+  },
+  "originalEvidence": {
+    "files": 50,
+    "differences": [],
+    "status": "PASS"
+  },
+  "realRuntime": {
+    "existedBefore": false,
+    "existsAfter": false,
+    "status": "PASS"
+  },
+  "git": {
+    "branch": "feature/json-persistence",
+    "refsBefore": [
+      "f6a9ee9b304c9fdb679268b9a6f501484df78d00",
+      "f6a9ee9b304c9fdb679268b9a6f501484df78d00"
+    ],
+    "refsAfter": [
+      "f6a9ee9b304c9fdb679268b9a6f501484df78d00",
+      "f6a9ee9b304c9fdb679268b9a6f501484df78d00"
+    ],
+    "status": "PASS",
+    "preexistingDeletion": "CODEX_TASK.md",
+    "committed": false,
+    "pushed": false,
+    "merged": false
+  },
+  "seedMatchesBlock3": true
+}

@@ -1,0 +1,78 @@
+{
+  "completedAt": "2026-10-11T12:29:29.881Z",
+  "extension": "JSON persistence + Delete are group-requested extensions, not mandatory PDF requirements",
+  "branch": "feature/json-persistence",
+  "tests": {
+    "unit": {
+      "pass": 14,
+      "fail": 0
+    },
+    "api": {
+      "pass": 12,
+      "fail": 0
+    },
+    "browserDev": {
+      "groups": 23,
+      "status": "PASS",
+      "unexpectedErrors": []
+    },
+    "browserProduction": {
+      "groups": 23,
+      "status": "PASS",
+      "unexpectedErrors": []
+    },
+    "e2e": {
+      "groups": 10,
+      "status": "PASS",
+      "actualBrowserProcessRestarted": true,
+      "actualBackendProcessRestarted": true
+    },
+    "build": {
+      "status": "PASS",
+      "modules": 38,
+      "stderr": ""
+    },
+    "syntax": {
+      "status": "PASS"
+    }
+  },
+  "pdfAcceptance": {
+    "newStudentAfterSubmit": "PASS",
+    "noNewDocumentForSubmit": "PASS",
+    "formResetAfterSuccess": "PASS",
+    "singleStudentsStateOwner": "PASS"
+  },
+  "evidence": {
+    "diagram": "docs/COMPONENT_DIAGRAM.md",
+    "recording": "docs/evidence/json-persistence/recording/add-student-persistence.webm",
+    "videoDurationSeconds": 16.76,
+    "docAdd": [
+      1,
+      1
+    ],
+    "docDelete": [
+      1,
+      1
+    ],
+    "codeExplanation": "docs/CODE_EXPLANATION.md",
+    "reactStateLog": "docs/evidence/json-persistence/react-state-log.json"
+  },
+  "testDataSafety": {
+    "realRuntimeUsed": false,
+    "testFilesUnder": ".tools/test-data",
+    "testFilesAutomaticallyDeleted": false
+  },
+  "notVerified": [
+    "Group presentation/submission",
+    "React DevTools extension",
+    "Firefox/Safari, physical devices, screen reader",
+    "Power-loss/crash in each write phase or other filesystems",
+    "Multiple backend writers (unsupported)",
+    "Dedicated Delete recording"
+  ],
+  "preservation": "docs/evidence/json-persistence/preservation.json",
+  "preexistingChangePreserved": "D CODEX_TASK.md",
+  "committed": false,
+  "pushed": false,
+  "merged": false
+}

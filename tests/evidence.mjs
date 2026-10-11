@@ -2,13 +2,17 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { startFixture } from './fixture.mjs';
 
-const url = process.env.TEST_URL || 'http://127.0.0.1:5173';
-const output = new URL('../docs/evidence/', import.meta.url);
+const fixture = await startFixture('evidence');
+let browser;
+try {
+const url = fixture.url;
+const output = new URL('../docs/evidence/json-persistence/recording/', import.meta.url);
 const temp = new URL('../.tools/videos/', import.meta.url);
 await fs.mkdir(output, { recursive: true });
 await fs.mkdir(temp, { recursive: true });
-const browser = await chromium.launch({
+browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe',
   headless: true,
   args: ['--remote-debugging-port=9337', '--remote-debugging-address=127.0.0.1', '--remote-allow-origins=devtools://devtools'],
@@ -57,6 +61,7 @@ try {
   const after = { studentCount: await page.locator('tbody tr').count(), docCount: await docRows.count(), timeOrigin: await page.evaluate(() => performance.timeOrigin), lastRow: await page.locator('tbody tr').last().innerText() };
   assert.equal(after.docCount, before.docCount);
   assert.equal(after.timeOrigin, before.timeOrigin);
+  assert.equal((await fixture.readData()).students.length, 41);
   await screenshot(devtools, 'devtools-doc-after.png');
   await fs.writeFile(new URL('devtools-doc-after.txt', output), await devtools.locator('body').ariaSnapshot());
   await page.getByRole('button', { name: '+ Thêm sinh viên', exact: true }).click();
@@ -67,13 +72,27 @@ try {
   await page.keyboard.press('Escape');
   await page.locator('tbody tr').last().scrollIntoViewIfNeeded();
   await pause();
-  report = { recordedAt: new Date().toISOString(), source: 'Live Google Chrome, Playwright video; actual Chrome DevTools frontend, Network/Doc', browser: await browser.version(), url, keepLog: true, disableCache: true, before, after, reset, checks: { newStudentImmediately: after.studentCount === 41, noNewDocumentRequest: after.docCount === before.docCount, sameDocument: after.timeOrigin === before.timeOrigin, formReset: true }, status: 'PASS' };
+  await devtools.getByRole('option', { name: 'Fetch/XHR', exact: true }).click();
+  await screenshot(devtools, 'devtools-fetch-xhr.png');
+  await devtools.getByRole('option', { name: 'Doc', exact: true }).click();
+  const beforeDelete = { docCount: await docRows.count(), timeOrigin: await page.evaluate(() => performance.timeOrigin) };
+  await page.locator('tbody tr').last().getByRole('button').click();
+  await page.locator('.delete-dialog button[type=submit]').click();
+  await page.waitForFunction(() => document.querySelectorAll('tbody tr').length === 40);
+  const afterDelete = { studentCount: 40, jsonCount: (await fixture.readData()).students.length, docCount: await docRows.count(), timeOrigin: await page.evaluate(() => performance.timeOrigin) };
+  assert.equal(afterDelete.jsonCount, 40);
+  assert.equal(afterDelete.docCount, beforeDelete.docCount);
+  assert.equal(afterDelete.timeOrigin, beforeDelete.timeOrigin);
+  await screenshot(devtools, 'devtools-doc-after-delete.png');
+  await fs.writeFile(new URL('devtools-doc-after-delete.txt', output), await devtools.locator('body').ariaSnapshot());
+  report = { beforeDelete, afterDelete, dataFile: fixture.dataFile, realUserRuntimeUsed: false, recordedAt: new Date().toISOString(), source: 'Live Google Chrome, Playwright video; actual Chrome DevTools frontend, Network/Doc', browser: await browser.version(), url, keepLog: true, disableCache: true, before, after, reset, checks: { newStudentImmediately: after.studentCount === 41, noNewDocumentRequest: after.docCount === before.docCount, sameDocument: after.timeOrigin === before.timeOrigin, formReset: true }, status: 'PASS' };
 } finally {
   await toolsContext.close();
   await context.close();
   // Browser đóng sau khi quay phiên riêng, tránh screencast DevTools ảnh hưởng video.
 
 }
+await fixture.restartBackend({ freshRecording: true });
 const recordingContext = await browser.newContext({ viewport: { width: 1440, height: 1000 }, recordVideo: { dir: fileURLToPath(temp), size: { width: 1440, height: 1000 } } });
 const recordingPage = await recordingContext.newPage();
 const video = recordingPage.video();
@@ -98,11 +117,25 @@ try {
   await recordingPage.keyboard.press('Escape');
   await recordingPage.locator('tbody tr').last().scrollIntoViewIfNeeded();
   await recordingPage.waitForTimeout(1200);
-  report.recordingSession = { studentsBefore: 40, studentsAfter: await recordingPage.locator('tbody tr').count(), sameDocument: true, reset, edited: false };
+  assert.equal((await fixture.readData()).students.length, 41);
+  await recordingPage.reload(); // F5 chủ động, tách khỏi cửa sổ đo submit không reload.
+  await recordingPage.waitForFunction(() => document.querySelectorAll('tbody tr').length === 41);
+  assert.notEqual(await recordingPage.evaluate(() => performance.timeOrigin), beforeTimeOrigin);
+  assert.equal((await fixture.readData()).students.length, 41);
+  await recordingPage.locator('tbody tr').last().scrollIntoViewIfNeeded();
+  await screenshot(recordingPage, 'recording-after-f5.png');
+  await recordingPage.waitForTimeout(2500);
+  report.recordingSession = { studentsAfterF5: 41, jsonCount: 41, manualRefreshSeparate: true, dataFile: fixture.dataFile, studentsBefore: 40, studentsAfter: await recordingPage.locator('tbody tr').count(), sameDocumentDuringSubmit: true, reset, edited: false };
 } finally {
   await recordingContext.close();
-  await video.saveAs(fileURLToPath(new URL('add-student.webm', output)));
+  await video.saveAs(fileURLToPath(new URL('add-student-persistence.webm', output)));
   await browser.close();
+  await fixture.close();
 }
 await fs.writeFile(new URL('recording-and-devtools-results.json', output), JSON.stringify(report, null, 2));
 console.log(JSON.stringify(report, null, 2));
+
+} finally {
+  await browser?.close();
+  await fixture.close();
+}

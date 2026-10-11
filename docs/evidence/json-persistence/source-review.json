@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-11T12:28:26.309Z",
+  "stateOwnerMatches": [
+    {
+      "file": "src/App.jsx",
+      "line": 11,
+      "source": "const [students, setStudents] = useState([]);"
+    }
+  ],
+  "reactStateOwnership": "App is sole students React owner; JSON is persistent storage, not a second React list state.",
+  "updates": {
+    "load": "setStudents(data)",
+    "add": "setStudents(current => [...current, student]) after await POST",
+    "delete": "setStudents(current => current.filter(...)) after await DELETE"
+  },
+  "controlledInputs": "AddStudentForm values with value/onChange",
+  "preventDefault": "AddStudentForm and DeleteStudentDialog onSubmit",
+  "backend": "Three JSON APIs; express.static serves unchanged dist shell; no render/template engine",
+  "checks": {
+    "oneStudentsStateOwner": true,
+    "headerListRowMainUnchanged": true,
+    "noReloadOrManualDomListUpdate": true,
+    "errorsKeepFormAndList": true,
+    "testsOwnJsonFiles": true
+  },
+  "status": "PASS"
+}

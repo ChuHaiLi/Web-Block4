@@ -1,0 +1,78 @@
+- navigation "Main toolbar":
+  - toolbar:
+    - button "Select an element in the page to inspect it - Ctrl + Shift + C"
+    - button "Toggle screencast"
+  - tablist "Panels":
+    - tab "Elements"
+    - tab "Console"
+    - tab "Sources"
+    - tab "Network" [selected]
+    - tab "Performance"
+    - tab "Memory"
+    - tab "Application"
+    - tab "Security"
+    - tab "Lighthouse"
+    - tab "Recorder"
+  - toolbar:
+    - button "AI assistance"
+    - button "Settings - F1 - Shift + ?"
+    - button "Customize and control DevTools":
+      - button "Customize and control DevTools"
+- tabpanel "Network panel":
+  - toolbar:
+    - button "Stop recording network log - Ctrl + E" [pressed]
+    - button "Clear network log - Ctrl + L"
+    - button "Filter" [pressed]
+    - button "Search"
+    - checkbox "Keep log" [checked]
+    - text: Keep log
+    - checkbox "Disable cache" [checked]
+    - text: Disable cache
+    - combobox "Throttling"
+    - button "More network conditions…"
+    - button "Import HAR file…"
+    - button "Export HAR (sanitized)…"
+    - button "Network settings"
+  - toolbar:
+    - textbox "Filter"
+  - checkbox "Invert"
+  - text: Invert
+  - button "Show only/hide requests": More filters
+  - listbox "Request types to include":
+    - option "All"
+    - option "Fetch/XHR"
+    - option "Doc" [selected]
+    - option "CSS"
+    - option "JS"
+    - option "Font"
+    - option "Img"
+    - option "Media"
+    - option "Manifest"
+    - option "Socket"
+    - option "Wasm"
+    - option "Other"
+  - group "Overview grid window":
+    - text: 0 ms 50 ms 100 ms 150 ms 200 ms 250 ms 300 ms 350 ms 400 ms 450 ms 500 ms
+    - slider "Left resizer"
+    - slider "Right resizer"
+  - application:
+    - table:
+      - rowgroup:
+        - row "Name - Sortable column. Press enter to apply sorting filter Status - Sortable column. Press enter to apply sorting filter Type - Sortable column. Press enter to apply sorting filter Initiator - Sortable column. Press enter to apply sorting filter Size - Sortable column. Press enter to apply sorting filter Time - Sortable column. Press enter to apply sorting filter":
+          - columnheader "Name - Sortable column. Press enter to apply sorting filter": Name
+          - columnheader "Status - Sortable column. Press enter to apply sorting filter": Status
+          - columnheader "Type - Sortable column. Press enter to apply sorting filter": Type
+          - columnheader "Initiator - Sortable column. Press enter to apply sorting filter": Initiator
+          - columnheader "Size - Sortable column. Press enter to apply sorting filter": Size
+          - columnheader "Time - Sortable column. Press enter to apply sorting filter": Time
+      - rowgroup:
+        - row "127.0.0.1 200 document Other 0.9 kB 14 ms":
+          - cell "127.0.0.1"
+          - cell "200"
+          - cell "document"
+          - cell "Other"
+          - cell "0.9 kB"
+          - cell "14 ms"
+  - status: "1 / 23 requests 0.9 kB / 1,404 kB transferred 0.7 kB / 1,398 kB resources Finish: 449 ms DOMContentLoaded: 276 ms Load: 283 ms"
+- alert: Network data available
+- status

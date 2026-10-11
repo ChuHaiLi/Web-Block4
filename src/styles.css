@@ -223,3 +223,6 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--er
 @media print {
   .delete-dialog, .student-actions, .col-actions, thead th:last-child { display: none; }
 }
+
+button:disabled { opacity: .6; cursor: wait; }
+a[aria-disabled="true"] { opacity: .6; cursor: wait; }

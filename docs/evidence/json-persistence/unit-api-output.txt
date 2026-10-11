@@ -1,0 +1,41 @@
+
+> student-management-csr@1.0.0 test
+> node --test tests/*.test.js
+
+✔ GET trả đủ 40 seed; initialize lại không ghi đè runtime (210.1019ms)
+✔ POST trả 201 chỉ sau khi hồ sơ và counter đã nằm trong JSON (117.8479ms)
+✔ POST từ chối kiểu sai, đầu vào sai, ID/path tự truyền và JSON malformed (187.3287ms)
+✔ Email trùng và POST đồng thời cùng email chỉ tạo một hồ sơ (210.7516ms)
+✔ 20 POST đồng thời không mất hồ sơ, ID không trùng; DELETE liên tiếp lưu đúng (368.8596ms)
+✔ DELETE xóa đúng ID; không tồn tại trả 404 và không sửa file (197.5619ms)
+✔ Restart TIẾN TRÌNH Express giữ Add/Delete và bộ đếm MSSV (2422.6848ms)
+✔ Runtime lỗi cú pháp/shape/ID/counter: dừng an toàn và giữ nguyên bytes (27.2262ms)
+Lỗi JSON storage: Injected write failure
+Lỗi JSON storage: Injected write failure
+✔ Lỗi rename được mô phỏng: API 500, hồ sơ/counter không mất; thử lại được (55.8738ms)
+Lỗi JSON storage: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+✔ GET báo lỗi đọc JSON giữa phiên, không seed lại; phục hồi file thì GET lại được (40.2177ms)
+✔ Đường dẫn runtime ngoài thư mục quản lý/seed bị chặn trước ghi file (0.8955ms)
+✔ Seed gốc và runtime thật không bị bộ test sửa; API không render EJS/HTML (84.1962ms)
+✔ seed: 40 hồ sơ đầy đủ, ID và email duy nhất (4.4361ms)
+✔ chuẩn hóa tên và dùng majorCode của lớp 24C11 (5.2506ms)
+✔ cấp MSSV theo khóa, giữ số 0 ở đầu (0.6564ms)
+✔ không thay đổi seed, input hoặc hồ sơ cũ (0.5427ms)
+✔ từ chối tên trắng, email sai và lớp ngoài danh mục (2.1425ms)
+✔ từ chối email trùng kể cả khác hoa/thường và có khoảng trắng (0.2478ms)
+✔ chặn dữ liệu vượt độ dài (0.2243ms)
+✔ hết mã một khóa không ảnh hưởng khóa khác (0.7175ms)
+✔ metadata chỉ giữ số thứ tự theo khóa, không mutate hồ sơ seed (0.7867ms)
+✔ xóa MSSV seed cao nhất vẫn không cấp lại mã đó trong phiên (0.5716ms)
+✔ xóa hết danh sách không làm mất bộ đếm và có thể dùng lại email (0.2889ms)
+✔ mã cuối đã xóa vẫn được coi là đã cấp; khóa khác tiếp tục thêm (0.2253ms)
+✔ từ chối dữ liệu không có kiểu chuỗi thay vì throw TypeError (0.1936ms)
+✔ MSSV và đường dẫn file không được nhận từ request input (0.1208ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4396.6942

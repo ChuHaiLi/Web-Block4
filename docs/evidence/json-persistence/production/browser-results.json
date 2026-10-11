@@ -1,0 +1,118 @@
+{
+  "testedAt": "2026-10-11T12:25:51.704Z",
+  "url": "http://127.0.0.1:59409",
+  "browser": "Google Chrome 154.0.8037.98",
+  "viewport": "1440×1000; 390×844; 320×640",
+  "mode": "production",
+  "dataFile": "D:\\VSCode\\HCMUS\\Web\\Block4\\.tools\\test-data\\production-koQCwJ\\students.json",
+  "checks": [
+    {
+      "name": "40 seed records đúng dữ liệu/thứ tự; HTTP trả HTML shell",
+      "status": "PASS"
+    },
+    {
+      "name": "Validation giữ dữ liệu khi lỗi và không thêm hồ sơ",
+      "status": "PASS"
+    },
+    {
+      "name": "API POST thất bại (tiêm 500): giữ form/danh sách/JSON, không giả thành công",
+      "status": "PASS"
+    },
+    {
+      "name": "Pending POST chưa cập nhật State/JSON; double-submit chỉ gửi một request thật",
+      "status": "PASS"
+    },
+    {
+      "name": "Submit thêm ngay, nối cuối, không mutate 40 hồ sơ cũ",
+      "status": "PASS"
+    },
+    {
+      "name": "CDP Document count không tăng; Fetch POST JSON được phép; timeOrigin giữ nguyên",
+      "status": "PASS"
+    },
+    {
+      "name": "Controlled inputs reset cả ba trường; mở lại thấy form trống",
+      "status": "PASS"
+    },
+    {
+      "name": "Email trùng bị từ chối, giữ inputs để sửa",
+      "status": "PASS"
+    },
+    {
+      "name": "Submit bằng Enter, thêm liên tiếp, ID duy nhất và đúng thứ tự/khóa",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete: đúng hồ sơ xác nhận; mở/Hủy/Escape đều giữ nguyên danh sách",
+      "status": "PASS"
+    },
+    {
+      "name": "API DELETE thất bại (tiêm 500): giữ dòng/JSON/dialog, có lỗi và thử lại được",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete: chỉ xóa hồ sơ đã xác nhận, cập nhật số lượng; giữ hồ sơ/thứ tự còn lại",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete: Fetch DELETE lưu JSON, không Document mới, cùng timeOrigin",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete + Add: email đã xóa dùng lại được; không tái cấp MSSV mới nhất; form vẫn reset",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete hết: empty state, Add vẫn hoạt động và không tái cấp mã seed/đã xóa",
+      "status": "PASS"
+    },
+    {
+      "name": "F5 chủ động tải lại đúng JSON sau Add/Delete, không quay về seed",
+      "status": "PASS"
+    },
+    {
+      "name": "Restart tiến trình Express rồi F5 vẫn giữ danh sách/counter đã lưu",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Delete 390px: dialog trong viewport, cuộn được, Hủy giữ danh sách",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile 390px: không tràn trang, bảng cuộn ngang, popup trong viewport, Esc đóng",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile Delete 320px: dialog trong viewport, cuộn được, Hủy giữ danh sách",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile 320px: không tràn trang, bảng cuộn ngang, popup trong viewport, Esc đóng",
+      "status": "PASS"
+    },
+    {
+      "name": "GET thất bại: báo lỗi, không giả seed/empty list; Thử lại tải đúng JSON",
+      "status": "PASS"
+    },
+    {
+      "name": "Không có pageerror/console.error bất ngờ; lỗi 500 tiêm có ghi riêng",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "expectedConsoleErrors": [
+    {
+      "phase": "POST 500 được tiêm để kiểm tra lỗi",
+      "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    },
+    {
+      "phase": "DELETE 500 được tiêm để kiểm tra lỗi",
+      "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    },
+    {
+      "phase": "GET 500 được tiêm để kiểm tra loading/error",
+      "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    }
+  ],
+  "status": "PASS"
+}

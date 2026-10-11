@@ -1,0 +1,28 @@
+{
+  "url": "http://127.0.0.1:51972",
+  "browser": "154.0.8037.98",
+  "before": {
+    "rows": 43,
+    "docCount": 1,
+    "timeOrigin": 1791721516997.9
+  },
+  "after": {
+    "rows": 42,
+    "docCount": 1,
+    "timeOrigin": 1791721516997.9
+  },
+  "deletedId": "02410010",
+  "requests": [
+    {
+      "type": "fetch",
+      "url": "http://127.0.0.1:51972/api/students/02410010",
+      "method": "DELETE"
+    },
+    {
+      "type": "fetch",
+      "url": "http://127.0.0.1:51972/api/students/02410010",
+      "method": "DELETE"
+    }
+  ],
+  "preservedOtherRecordsAndOrder": true
+}

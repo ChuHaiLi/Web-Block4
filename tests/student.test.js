@@ -80,3 +80,14 @@ test('mã cuối đã xóa vẫn được coi là đã cấp; khóa khác tiếp
   assert.ok(createStudent({ ...values, className: '26TOAN1' }, seed, counters).error);
   assert.equal(createStudent({ ...values, className: '25KHDL1' }, seed, counters).student.id, '02500011');
 });
+
+test('từ chối dữ liệu không có kiểu chuỗi thay vì throw TypeError', () => {
+  for (const input of [null, [], {}, { ...values, name: 123 }, { ...values, email: null }]) {
+    assert.equal(createStudent(input, seed).status, 400);
+  }
+});
+
+test('MSSV và đường dẫn file không được nhận từ request input', () => {
+  assert.equal(createStudent({ ...values, id: '02410011' }, seed).status, 400);
+  assert.equal(createStudent({ ...values, file: '../Block3/data/students.json' }, seed).status, 400);
+});

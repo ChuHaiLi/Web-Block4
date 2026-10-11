@@ -1,38 +1,27 @@
-# Kịch bản demo 10 phút - PDF trang 17
+# Kịch bản demo khoảng 10 phút
 
-Chuẩn bị: chạy Block4 bằng npm.cmd run dev, mở http://127.0.0.1:5173 trong Chrome; mở App.jsx, AddStudentForm.jsx, StudentList.jsx, StudentRow.jsx và sơ đồ. Không sửa source trong lúc quan sát Network để tránh Vite reload do thay đổi file. Reload trước demo để về 40 hồ sơ.
+JSON Persistence/Delete là mở rộng theo quyết định nhóm. Bốn tiêu chí Add CSR trong PDF vẫn là trọng tâm.
 
-| Thời gian | Thao tác | Nội dung nói |
-|---|---|---|
-| 0:00-1:00 | Giới thiệu trang, 40 seed records, bố cục kế thừa | “Block 1 trong đề chính là Block3 của nhóm. Đây là cùng Student Management, render ở browser.” |
-| 1:00-2:00 | F12 → Network → Doc; bật Keep log; reload một lần, chụp trước | “Đây là document request ban đầu. Ta sẽ giữ log để kiểm tra có document mới khi submit hay không.” |
-| 2:00-4:00 | + Thêm sinh viên; nhập Nguyễn Minh Anh CSR / csr.demo@example.com / 24C11; submit | “Input value lấy từ values state, onChange cập nhật values. Submit gọi preventDefault, rồi callback lên App.” |
-| 4:00-5:00 | Chỉ dòng cuối 02410011, mở lại form trống, xem Network | “Danh sách có 41; ba trường reset. Doc vẫn đúng một request; không có POST/navigation do submit.” |
-| 5:00-7:00 | Mở App.jsx và sơ đồ; chỉ useState, addStudent, spread; mở List/Row | “App là owner duy nhất. Tạo mảng mới với current và sinh viên mới. List nhận props và map Row; key là ID.” |
-| 7:00-8:30 | Chỉ state bằng React DevTools hoặc breakpoint tại App | “State đổi khiến component được render lại. React cập nhật DOM; render lại không phải reload document.” |
-| 8:30-9:30 | Mở source route/form EJS của Block3, chỉ POST/303/res.render | “SSR POST lên Express, store lưu JSON, 303 rồi GET trả HTML mới. CSR bài này chỉ cập nhật state ở client.” |
-| 9:30-10:00 | Nhắc giới hạn refresh về seed, mở bốn evidence và chuẩn bị nộp | “Không API/database hoặc lưu bền vững. Model rendering phụ thuộc cơ chế ứng dụng, không chỉ tên React.” |
+Trước demo: cài dependency, chạy backend + Vite hoặc build + npm start; kiểm tra API. Nếu cần bắt đầu đúng 40 hồ sơ, dùng file test mới theo JSON_PERSISTENCE.md, không reset runtime thật. Chọn email demo chưa tồn tại.
 
-So sánh SSR dùng source đã đọc, không cần thêm sinh viên thật vào Block3 để demo. Không chạy POST tới backend cũ trong quy trình kiểm thử này. Nhóm có thể chỉ routes/students.js và views/partials/student-form.ejs hoặc artifact SSR đã có.
+| Phút | Thao tác và lời giải thích |
+|---|---|
+| 0–1 | Mở trang. Giải thích HTML shell → JS → Fetch JSON → React State → UI. Chỉ API storage là mở rộng. |
+| 1–2 | F12 Network, bật Keep log/Preserve log, lọc Doc. Reload một lần để có baseline, chờ GET xong. Ghi số document; từ đây chưa F5. |
+| 2–4 | Mở popup, nhập tên/email/lớp. Giải thích controlled inputs và preventDefault. Submit, chỉ hồ sơ mới/tổng số; mở lại form thấy ba trường rỗng. |
+| 4–5 | So Doc trước/sau: không tăng. Chuyển Fetch/XHR thấy POST 201 JSON; request API được phép trong CSR. |
+| 5–6 | F5 chủ động: document mới do F5 là bình thường. Hồ sơ vừa thêm vẫn còn vì GET đọc JSON đã lưu. Có thể xem runtime trong editor, chỉ đọc. |
+| 6–7 | Chỉ App.jsx: students useState, setStudents spread; Form onAdd callback; List.map/Row props. JSON là storage, App là React owner duy nhất. |
+| 7–8 | Xóa hồ sơ demo: mở dialog chưa xóa, Hủy thử; mở lại xác nhận, dòng biến mất. Đo Doc riêng trước/sau Delete; F5 sau đo, dòng không trở lại. |
+| 8–9 | So Block3 POST→303→GET→EJS HTML với Block4 Fetch JSON→setStudents→React render. Express có mặt không đồng nghĩa SSR. |
+| 9–10 | Mở sơ đồ/bằng chứng. Nêu API lỗi giữ form/list, queue và counter. Trả lời câu hỏi, nhóm tự nộp artifact theo PDF. |
 
-## Câu hỏi nhóm cần tự giải thích
+Muốn chứng minh restart: dừng đúng backend bằng Ctrl+C, chạy lại cùng cấu hình file, F5 xác minh. Không đổi STUDENT_DATA_FILE giữa hai lần. Có thể thay một phút đọc code bằng thao tác này.
 
-- Vì sao App giữ students, còn Form chỉ giữ values?
-- Callback là prop như thế nào, khi gọi thì dữ liệu đi ra sao?
-- Vì sao không dùng students.push()? current trong functional update là gì?
-- Thiếu preventDefault thì browser có thể submit/navigate thế nào?
-- Vì sao mở lại form trống? Lỗi email thì tại sao dữ liệu được giữ?
-- Vì sao refresh lại mất sinh viên mới trong bài này?
-- React có bắt buộc là CSR không? Không; ứng dụng này CSR vì browser chạy JS để tạo bảng từ shell.
-
-Kịch bản đã chuẩn bị; thời lượng và khả năng trình bày thực tế của nhóm chưa được xác minh. PDF trang 19 nhắc nộp artifact trước khi rời lớp: nhóm tự thực hiện bước nộp.
-
-## Demo Delete tùy chọn sau phần 10 phút bắt buộc
-
-Delete là phần mở rộng của người dùng. Giữ phần Add/Network/state owner/POST SSR trong kịch bản PDF ở trên.
-
-1. Bấm Xóa một dòng, chỉ năm trường trong dialog và cảnh báo. Bấm Hủy hoặc Escape: danh sách vẫn giữ nguyên.
-2. Bấm Xóa lại, xác nhận: hồ sơ biến mất ngay, tổng số giảm, Network Doc không tăng.
-3. Chỉ callback App → List → Row và Dialog → onConfirm → App.filter; không mutate state. App vẫn là owner duy nhất.
-4. So sánh Block3 GET xác nhận, POST xóa/303/GET với dialog client + filter. Chỉ đọc source Block3, không POST tới backend cũ.
-5. Nếu có thời gian, thêm rồi xóa hồ sơ mới và thêm lại để chỉ MSSV đã cấp không tái sử dụng trong phiên; reload khôi phục seed.
+Câu hỏi luyện tập:
+- State nào render bảng? App.students.
+- Input do ai giữ? AddStudentForm.values.
+- Vì sao state đổi? Callback App await API rồi setStudents tạo array mới.
+- Vì sao không reload? preventDefault + Fetch, không form navigation.
+- Vì sao F5 giữ hồ sơ? React tải lại JSON runtime, không phải state còn trong RAM.
+- Vì sao không reset khi lỗi file? Bảo toàn dữ liệu lỗi để sửa/khôi phục có kiểm soát.

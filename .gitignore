@@ -6,3 +6,7 @@ test-results/
 playwright-report/
 .env
 .env.*
+
+# Dữ liệu runtime riêng; seed trong src/data vẫn được theo dõi.
+/data/*.json
+/data/*.tmp

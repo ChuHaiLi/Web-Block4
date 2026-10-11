@@ -1,0 +1,59 @@
+{
+  "beforeDelete": {
+    "docCount": 1,
+    "timeOrigin": 1791721006795.5
+  },
+  "afterDelete": {
+    "studentCount": 40,
+    "jsonCount": 40,
+    "docCount": 1,
+    "timeOrigin": 1791721006795.5
+  },
+  "dataFile": "D:\\VSCode\\HCMUS\\Web\\Block4\\.tools\\test-data\\evidence-WJLn3C\\students.json",
+  "realUserRuntimeUsed": false,
+  "recordedAt": "2026-10-11T12:16:58.900Z",
+  "source": "Live Google Chrome, Playwright video; actual Chrome DevTools frontend, Network/Doc",
+  "browser": "154.0.8037.98",
+  "url": "http://127.0.0.1:58871",
+  "keepLog": true,
+  "disableCache": true,
+  "before": {
+    "studentCount": 40,
+    "docCount": 1,
+    "timeOrigin": 1791721006795.5
+  },
+  "after": {
+    "studentCount": 41,
+    "docCount": 1,
+    "timeOrigin": 1791721006795.5,
+    "lastRow": "02410011\tNguyễn Minh Anh CSR\tcsr.demo@example.com\t24C11\tCông nghệ thông tin\tXóa"
+  },
+  "reset": {
+    "name": "",
+    "email": "",
+    "className": ""
+  },
+  "checks": {
+    "newStudentImmediately": true,
+    "noNewDocumentRequest": true,
+    "sameDocument": true,
+    "formReset": true
+  },
+  "status": "PASS",
+  "recordingSession": {
+    "studentsAfterF5": 41,
+    "jsonCount": 41,
+    "manualRefreshSeparate": true,
+    "dataFile": "D:\\VSCode\\HCMUS\\Web\\Block4\\.tools\\test-data\\evidence-WJLn3C\\recording.json",
+    "studentsBefore": 40,
+    "studentsAfter": 41,
+    "reset": {
+      "name": "",
+      "email": "",
+      "className": ""
+    },
+    "edited": false,
+    "sameDocumentDuringSubmit": true,
+    "note": "sameDocumentDuringSubmit measured before explicit F5; F5 changes timeOrigin and preserves 41 saved students."
+  }
+}

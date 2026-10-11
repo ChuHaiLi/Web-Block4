@@ -1,0 +1,245 @@
+
+> student-management-csr@1.0.0 test:e2e
+> node tests/persistence.mjs
+
+{
+  "testedAt": "2026-10-11T12:25:27.128Z",
+  "url": "http://127.0.0.1:51971",
+  "browser": "154.0.8037.98",
+  "dataFile": "D:\\VSCode\\HCMUS\\Web\\Block4\\.tools\\test-data\\production-78aGAQ\\students.json",
+  "checks": [
+    {
+      "name": "Mở frontend production CSR: 40 seed từ API/JSON",
+      "status": "PASS"
+    },
+    {
+      "name": "Add sinh viên 41: UI và JSON cùng hồ sơ; 40 seed được giữ nguyên",
+      "status": "PASS"
+    },
+    {
+      "name": "Fetch POST không tạo Document navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "Controlled inputs reset sau phản hồi lưu thành công",
+      "status": "PASS"
+    },
+    {
+      "name": "F5 sau Add vẫn có sinh viên 41; JSON không đổi",
+      "status": "PASS"
+    },
+    {
+      "name": "Đóng/mở lại tiến trình Chrome vẫn đọc đúng 41 sinh viên",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete lưu JSON và xóa UI, không Document navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "F5 sau Delete không làm sinh viên đã xóa xuất hiện lại",
+      "status": "PASS"
+    },
+    {
+      "name": "Restart tiến trình Express rồi F5 vẫn giữ dữ liệu/counter đã lưu",
+      "status": "PASS"
+    },
+    {
+      "name": "Không có pageerror hoặc console.error trong E2E thật",
+      "status": "PASS"
+    }
+  ],
+  "network": [
+    {
+      "type": "document",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/"
+    },
+    {
+      "type": "script",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BY8QTBp-.js"
+    },
+    {
+      "type": "stylesheet",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BnKhE-ae.css"
+    },
+    {
+      "type": "fetch",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/api/students"
+    },
+    {
+      "type": "other",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/favicon.svg"
+    },
+    {
+      "type": "fetch",
+      "method": "POST",
+      "url": "http://127.0.0.1:51971/api/students"
+    },
+    {
+      "type": "document",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/"
+    },
+    {
+      "type": "script",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BY8QTBp-.js"
+    },
+    {
+      "type": "stylesheet",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BnKhE-ae.css"
+    },
+    {
+      "type": "fetch",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/api/students"
+    },
+    {
+      "type": "other",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/favicon.svg"
+    },
+    {
+      "type": "document",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/"
+    },
+    {
+      "type": "script",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BY8QTBp-.js"
+    },
+    {
+      "type": "stylesheet",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BnKhE-ae.css"
+    },
+    {
+      "type": "fetch",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/api/students"
+    },
+    {
+      "type": "other",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/favicon.svg"
+    },
+    {
+      "type": "fetch",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:51971/api/students/02410011"
+    },
+    {
+      "type": "document",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/"
+    },
+    {
+      "type": "script",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BY8QTBp-.js"
+    },
+    {
+      "type": "stylesheet",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BnKhE-ae.css"
+    },
+    {
+      "type": "fetch",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/api/students"
+    },
+    {
+      "type": "other",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/favicon.svg"
+    },
+    {
+      "type": "document",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/"
+    },
+    {
+      "type": "script",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BY8QTBp-.js"
+    },
+    {
+      "type": "stylesheet",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/assets/index-BnKhE-ae.css"
+    },
+    {
+      "type": "other",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/favicon.svg"
+    },
+    {
+      "type": "fetch",
+      "method": "GET",
+      "url": "http://127.0.0.1:51971/api/students"
+    }
+  ],
+  "measuredSubmitWindows": {
+    "add": {
+      "before": {
+        "docCount": 1,
+        "timeOrigin": 1791721513688
+      },
+      "after": {
+        "docCount": 1,
+        "timeOrigin": 1791721513688,
+        "students": 41,
+        "student": {
+          "id": "02410011",
+          "name": "Nguyễn Minh Anh Persistence",
+          "email": "persistence.e2e@example.com",
+          "className": "24C11",
+          "major": "CNTT"
+        }
+      }
+    },
+    "delete": {
+      "before": {
+        "docCount": 3,
+        "timeOrigin": 1791721524116.4
+      },
+      "after": {
+        "docCount": 3,
+        "timeOrigin": 1791721524116.4,
+        "students": 40
+      }
+    }
+  },
+  "errors": [],
+  "runtimeAfterAdd": {
+    "students": 41,
+    "lastStudent": {
+      "id": "02410011",
+      "name": "Nguyễn Minh Anh Persistence",
+      "email": "persistence.e2e@example.com",
+      "className": "24C11",
+      "major": "CNTT"
+    },
+    "sha256": "f5b216e32a12f418ce2b97f76111f064c952d6034bf0efafd6448ddd5fd3278f"
+  },
+  "runtimeAfterDeleteAndRestart": {
+    "students": 40,
+    "counters": {
+      "024": 10011,
+      "025": 10,
+      "026": 10
+    },
+    "sha256": "cd2f4616fb6ba47f23cf3441e99af0c20979ef2a467550a1a27e35afdb6aa3df"
+  },
+  "actualBrowserProcessRestarted": true,
+  "actualBackendProcessRestarted": true,
+  "realUserRuntimeUsed": false,
+  "status": "PASS"
+}

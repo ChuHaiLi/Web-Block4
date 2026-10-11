@@ -1,34 +1,33 @@
-# Evidence 1 - Component và state owner
-
-Delete là phần mở rộng của người dùng, không thêm yêu cầu nghiệm thu vào PDF.
+# Evidence 1 — Component diagram và state owner
 
 ```mermaid
 flowchart TD
-  Root["main.jsx: createRoot + StrictMode"] --> App["App: owner duy nhất của students"]
-  Seed["students.seed.json: 40 records"] -. "khởi tạo useState" .-> App
+  Root["main.jsx: createRoot"] --> App["App: students useState([]) — owner duy nhất"]
   App --> Header["SiteHeader"]
-  App -->|"students, createdId, onRequestDelete"| List["StudentList: map students"]
-  List -->|"student, isNew, onRequestDelete; key=id"| Row["StudentRow: dòng + nút Xóa"]
-  App -->|"onAdd=addStudent"| Form["AddStudentForm: values/error state"]
-  Form -. "submit → preventDefault → onAdd(values)" .-> App
-  Row -. "Xóa → onRequestDelete(id)" .-> App
-  App -->|"student từ students.find; onConfirm, onCancel"| Dialog["DeleteStudentDialog: hồ sơ + xác nhận"]
-  Dialog -. "Hủy/Escape → onCancel" .-> App
-  Dialog -. "submit → preventDefault → onConfirm" .-> App
-  App -. "thêm: setStudents(current => spread + student)" .-> App
-  App -. "xóa: setStudents(current => current.filter(...))" .-> App
+  App -->|"onAdd(values)"| Form["AddStudentForm: values, error, submitting"]
+  Form -. "submit → preventDefault → await onAdd" .-> App
+  App -->|"students, createdId, onRequestDelete"| List["StudentList"]
+  List -->|"student, onRequestDelete"| Row["StudentRow: props"]
+  Row -. "click Xóa → callback(id)" .-> App
+  App -->|"student suy ra từ pendingDeleteId, onConfirm, onCancel"| Dialog["DeleteStudentDialog: error, saving"]
+  Dialog -. "xác nhận → await onConfirm" .-> App
+  App -->|"Fetch GET / POST / DELETE"| API["src/api/students.js"]
+  API --> Express["Express REST API — JSON response"]
+  Express --> Store["store: validate + queue + temp/rename"]
+  Store --> Runtime["data/students.json: persistent storage + counters"]
+  Seed["seed gốc 40 — bất biến"] -->|"chỉ khi runtime chưa có"| Store
+  API -. "response thành công → setStudents" .-> App
 ```
 
-App kiểm tra/cấp ID khi thêm và lọc theo ID khi xác nhận xóa. List truyền tiếp callback xóa đến Row, không sửa dữ liệu. Dialog cũng chỉ gọi callback; mở hộp thoại chưa xóa hồ sơ. Form reset khi onAdd trả chuỗi rỗng và giữ values nếu có lỗi.
+React State là nguồn trực tiếp của JSX. JSON là storage bền vững; counters chỉ nằm ở backend, không phải một danh sách React State khác.
 
-| Dữ liệu | Owner | Mục đích |
-|---|---|---|
-| students | App | Danh sách state chính thức duy nhất |
-| createdId/deletedId | App | Chuỗi MSSV cho thông báo/highlight |
-| pendingDeleteId | App | MSSV đang chờ xác nhận; Hủy/Escape đặt lại chuỗi rỗng |
-| pendingStudent | Không có state riêng | Tính từ students.find trong mỗi render của App |
-| issuedCounters | App, useRef | Số thứ tự cao nhất đã cấp theo khóa; không chứa hồ sơ/danh sách; không giảm khi xóa |
-| values/error | AddStudentForm | Dữ liệu form và lỗi đầu vào |
-| rowRef/panelRef/dialogRef/cancelRef | Component tương ứng | Tham chiếu DOM để cuộn/đóng popup/mở dialog/focus Hủy |
+| Component | State/props và vai trò |
+|---|---|
+| App | students duy nhất; loading/loadError/loadAttempt; createdId/deletedId/pendingDeleteId là metadata. mutationBusy ref khóa ghi UI; pendingStudent được find từ students. |
+| AddStudentForm | values liên kết value/onChange; error/submitting; gọi callback onAdd, chỉ reset khi callback thành công. |
+| StudentList | map students nhận qua props; không giữ bản sao list. |
+| StudentRow | render năm trường + nút Xóa; callback chuyển ID lên List/App. |
+| DeleteStudentDialog | student props, error/saving cục bộ; confirm/cancel callbacks; không tự xóa list. |
+| SiteHeader | Header/nav cố định, không quản lý students. |
 
-Props đi từ cha xuống con; con gọi callback nhận qua props để đề nghị owner thay đổi dữ liệu. Không có students state trong component con, Context, Redux, localStorage hoặc module store. JSON seed là input ban đầu. Native popover quản lý mở/đóng form; native dialog giữ focus trong hộp thoại; React quản lý nội dung và event.
+GET: [] → danh sách đã lưu. Add: current → [...current, student]. Delete: current → current.filter(...). Cả hai chỉ cập nhật sau JSON lưu thành công. F5 tạo App mới, GET nạp runtime thay vì trở về seed.

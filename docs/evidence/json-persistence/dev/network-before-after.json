@@ -1,0 +1,513 @@
+{
+  "browser": "154.0.8037.98",
+  "url": "http://127.0.0.1:51972",
+  "before": {
+    "requests": [
+      {
+        "type": "document",
+        "url": "http://127.0.0.1:51972/",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/@vite/client",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/main.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react-dom_client.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/App.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/chunk-UTB4IBU5.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/utils/student.js",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/api/students.js",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/SiteHeader.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/StudentList.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/AddStudentForm.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/DeleteStudentDialog.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/data/classes.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/StudentRow.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/data/majors.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "other",
+        "url": "http://127.0.0.1:51972/favicon.svg",
+        "method": "GET"
+      },
+      {
+        "type": "fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "POST"
+      }
+    ],
+    "network": [
+      {
+        "type": "Document",
+        "url": "http://127.0.0.1:51972/",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/@vite/client",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/main.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react-dom_client.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/App.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/chunk-UTB4IBU5.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/utils/student.js",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/api/students.js",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/SiteHeader.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/StudentList.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/AddStudentForm.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/DeleteStudentDialog.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/data/classes.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/StudentRow.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/data/majors.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "Fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "Fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "Other",
+        "url": "http://127.0.0.1:51972/favicon.svg",
+        "method": "GET"
+      },
+      {
+        "type": "Fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "POST"
+      }
+    ],
+    "values": {
+      "name": "Nguyễn Minh Anh CSR",
+      "email": "csr.demo@example.com",
+      "className": "24C11"
+    }
+  },
+  "after": {
+    "requests": [
+      {
+        "type": "document",
+        "url": "http://127.0.0.1:51972/",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/@vite/client",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/main.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react-dom_client.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/App.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/chunk-UTB4IBU5.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/utils/student.js",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/api/students.js",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/SiteHeader.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/StudentList.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/AddStudentForm.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/DeleteStudentDialog.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/data/classes.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/components/StudentRow.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "script",
+        "url": "http://127.0.0.1:51972/src/data/majors.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "other",
+        "url": "http://127.0.0.1:51972/favicon.svg",
+        "method": "GET"
+      },
+      {
+        "type": "fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "POST"
+      },
+      {
+        "type": "fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "POST"
+      }
+    ],
+    "network": [
+      {
+        "type": "Document",
+        "url": "http://127.0.0.1:51972/",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/@vite/client",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/main.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/react-dom_client.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/App.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/styles.css",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/node_modules/.vite/deps/chunk-UTB4IBU5.js?v=98194118",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/utils/student.js",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/api/students.js",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/SiteHeader.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/StudentList.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/AddStudentForm.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/DeleteStudentDialog.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/data/classes.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/components/StudentRow.jsx",
+        "method": "GET"
+      },
+      {
+        "type": "Script",
+        "url": "http://127.0.0.1:51972/src/data/majors.json?import",
+        "method": "GET"
+      },
+      {
+        "type": "Fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "Fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "GET"
+      },
+      {
+        "type": "Other",
+        "url": "http://127.0.0.1:51972/favicon.svg",
+        "method": "GET"
+      },
+      {
+        "type": "Fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "POST"
+      },
+      {
+        "type": "Fetch",
+        "url": "http://127.0.0.1:51972/api/students",
+        "method": "POST"
+      }
+    ],
+    "values": {
+      "name": "",
+      "email": "",
+      "className": ""
+    },
+    "newStudent": [
+      "02410011",
+      "Nguyễn Minh Anh CSR",
+      "csr.demo@example.com",
+      "24C11",
+      "Công nghệ thông tin"
+    ]
+  },
+  "documentCountBefore": 1,
+  "documentCountAfter": 1,
+  "submitRequests": [
+    {
+      "type": "fetch",
+      "url": "http://127.0.0.1:51972/api/students",
+      "method": "POST"
+    }
+  ],
+  "unchangedTimeOrigin": true
+}
