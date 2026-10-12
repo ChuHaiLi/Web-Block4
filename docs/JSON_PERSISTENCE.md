@@ -1,6 +1,6 @@
 # JSON Persistence — mở rộng của nhóm
 
-Không phải yêu cầu bắt buộc của PDF. Express 5 chỉ xử lý REST API và phục vụ assets production; không tạo HTML Student List.
+Không phải yêu cầu bắt buộc của PDF. Express 5 chỉ xử lý REST API và phục vụ assets production; không tạo HTML Student List. Recording chính thức duy nhất là [add-student.mp4](evidence/add-student.mp4); chỉ dùng để chứng minh F5 giữ dữ liệu nếu thao tác đó được quan sát rõ (xem EVIDENCE.md). F5 chủ động tạo document request mới, tách khỏi cửa sổ submit dùng để chứng minh CSR không reload. Capture tự động chỉ tạo ảnh/log, không quay hoặc ghi đè video.
 
 ## Storage
 

@@ -26,15 +26,15 @@
 | P4 | 13 | Quan sát reload/state transition | Log actual App, Chrome Network/CDP, F5 tách riêng | PASS |
 | A1 | 14 | Student mới xuất hiện sau submit | Row thứ 41 khớp ID/tên/email/lớp/ngành, JSON đã lưu | PASS |
 | A2 | 14 | Không document request mới do submit | DevTools Keep log Doc 1→1; CDP dev/prod/E2E | PASS |
-| A3 | 14 | Form reset | Cả name/email/className rỗng sau thành công, video/DOM | PASS |
+| A3 | 14 | Form reset | Cả name/email/className rỗng sau thành công, DOM/log lịch sử | PASS |
 | A4 | 14 | Một nguồn state list | Một students useState tại App; con chỉ props | PASS: source review |
 | E1 | 15 | Diagram/state owner | COMPONENT_DIAGRAM.md, thêm API/storage | PASS: artifact |
-| E2 | 15 | Recording Add | Video mới 16,76s, Chrome thật, reset + F5 giữ 41 | PASS: artifact đã xem |
+| E2 | 15 | Recording Add | [MP4 chính thức](evidence/add-student.mp4) do người dùng quay; phạm vi quan sát xem EVIDENCE.md | PASS lịch sử của capture cũ; MP4 đánh giá riêng trong EVIDENCE.md |
 | E3 | 15 | Network trước/sau | Ảnh DevTools Doc thật mới; Fetch/XHR riêng | PASS: artifact |
 | E4 | 15 | Code agent để nhóm giải thích | CODE_EXPLANATION.md, await API/store/CSR | PASS: tài liệu; nhóm trình bày NOT VERIFIED |
 | M1 | 16–17 | Demo khoảng 10 phút | DEMO.md đủ timeline | PASS: kịch bản; demo thực tế NOT VERIFIED |
 | M2 | 17 | Network lọc Doc | Phiên DevTools thực tế | PASS |
-| M3 | 17 | Thêm student | Browser/recording mới | PASS |
+| M3 | 17 | Thêm student | Browser/log lịch sử; MP4 chính thức xem EVIDENCE.md | PASS |
 | M4 | 17 | Chỉ owner | App source/diagram/actual debugger scope | PASS |
 | M5 | 17 | So POST form SSR | Đọc Block3 routes/EJS; POST→303→GET so Fetch JSON | PASS: phân tích/tài liệu |
 | R1 | 7–9,18 | JS tạo UI; state render; event nối thao tác; rendering model | README/code/diagram và Chrome runtime | PASS |
@@ -58,7 +58,7 @@ Môi trường: Windows, Node 24.18.0, npm 11.16.0, Chrome 154.0.8037.98, React 
 | Production build | PASS, 38 modules, stderr rỗng | build-output.txt |
 | Dependency | Express 5.2.1 cài offline thành công từ cache đọc, chỉ ghi Block4 | install-output.txt |
 | State observation | PASS, đọc biến App thực tế 40→41 | react-state-log.json |
-| Video/DevTools | PASS, Add/Delete Doc 1→1; reset/F5 | recording/ |
+| Capture/DevTools lịch sử | PASS đã ghi nhận, Add/Delete Doc 1→1; reset/F5; không tự áp dụng cho MP4 | recording/ (ảnh/log giữ nguyên) |
 | Bảo toàn | PASS, Block3 350 + Block1_2 59 files; seed/PDF/catalog/50 evidence gốc không đổi | preservation.json |
 
 Paths bảng trên tương đối từ [evidence/json-persistence](evidence/json-persistence/). npm test chạy tổng 26 test, không skip/fail. Backend injected write/JSON lỗi và browser tiêm HTTP 500 là **test lỗi có chủ đích**, ghi riêng; không có pageerror/console.error bất ngờ. Chưa chạy npm ci lại trong phiên extension; dependency được npm install offline, build và toàn bộ tests đã xác minh.
@@ -93,7 +93,7 @@ Chuỗi E2E: 40 → thêm 41 → đọc JSON → F5 41 → đóng/mở Chrome m�
 - Buổi demo/thuyết trình nhóm, tự giải thích trước giảng viên, nộp bài: NOT VERIFIED.
 - React DevTools extension, Firefox/Safari, browser cũ, thiết bị vật lý và screen reader: NOT VERIFIED.
 - Mất điện/crash từng bước ghi, filesystem khác, nhiều backend cùng ghi một file: NOT VERIFIED. Chỉ hỗ trợ một backend/file.
-- Chưa có video Delete riêng; không phải evidence bắt buộc PDF. Video Add không có thuyết minh, nhóm có thể tự quay thêm.
+- Chỉ giữ [add-student.mp4](evidence/add-student.mp4) do người dùng quay bằng Chrome/OBS làm recording chính thức. Không yêu cầu video mới/Delete. Kết quả lịch sử không xác minh thay nội dung MP4; phạm vi quan sát xem EVIDENCE.md.
 - Không auto-sync tab khác, auth hoặc backup tự động; xem JSON_PERSISTENCE.md.
 
-Bốn bằng chứng kỹ thuật PDF đã cập nhật. Không dùng kết quả baseline cũ làm nghiệm thu phiên bản mới.
+Danh sách bốn bằng chứng trang 15 được đồng bộ trong EVIDENCE.md: sơ đồ, MP4 chính thức, Network trước/sau, code explanation. PASS/FAIL của các test lịch sử không bị thay đổi; MP4 được đánh giá riêng theo nội dung đã quan sát. Không dùng kết quả baseline cũ làm nghiệm thu phiên bản mới.

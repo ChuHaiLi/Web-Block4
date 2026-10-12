@@ -89,12 +89,14 @@ npm.cmd test                 # unit + API
 npm.cmd run build           # cần trước browser production/E2E
 npm.cmd run test:browser     # dev và production
 npm.cmd run test:e2e         # 40 → 41 → F5 → Delete → F5 → restart
-npm.cmd run evidence:capture # video thật + Chrome DevTools Doc
+npm.cmd run evidence:capture # screenshot/log + Chrome DevTools Doc; không quay video
 ```
 
 Browser/E2E/evidence tự khởi động server trên cổng trống và JSON riêng trong .tools/test-data. Không cần chạy server tay cho các suite; không chạm data/students.json thật, không xóa/reset dữ liệu khi test/build. CHROME_PATH có thể chỉ đến Chrome đã cài nếu đường dẫn mặc định khác.
 
-Kết quả thực tế: **14 unit + 12 API**, **23 nhóm browser dev + 23 production**, **10 E2E** PASS; build PASS. [Bảng nghiệm thu](docs/ACCEPTANCE.md) nêu phạm vi và NOT VERIFIED. Bằng chứng cũ vẫn nằm tại docs/evidence, chỉ bằng chứng mới trong json-persistence được dùng cho phiên bản backend.
+Kết quả thực tế đã lưu: **14 unit + 12 API**, **23 nhóm browser dev + 23 production**, **10 E2E** PASS; build PASS. [Bảng nghiệm thu](docs/ACCEPTANCE.md) nêu phạm vi và NOT VERIFIED. Ảnh/log kiểm thử backend trong json-persistence được giữ nguyên; artifact baseline khác chỉ để tham khảo.
+
+Recording nghiệm thu duy nhất là [add-student.mp4](docs/evidence/add-student.mp4), do người dùng quay bằng Chrome và OBS. Phạm vi video đã xác minh xem [EVIDENCE.md](docs/EVIDENCE.md); không dùng recording tự động cũ. `evidence:capture` chỉ tạo screenshot/log và kiểm tra trên fixture riêng, không tạo video hoặc ghi đè MP4. Bốn bằng chứng theo trang 15 PDF: sơ đồ component/state owner, MP4 Add Student, Network trước/sau và code explanation.
 
 - [Sơ đồ component/state owner](docs/COMPONENT_DIAGRAM.md)
 - [Giải thích code](docs/CODE_EXPLANATION.md)

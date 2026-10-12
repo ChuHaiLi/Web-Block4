@@ -9,9 +9,7 @@ let browser;
 try {
 const url = fixture.url;
 const output = new URL('../docs/evidence/json-persistence/recording/', import.meta.url);
-const temp = new URL('../.tools/videos/', import.meta.url);
 await fs.mkdir(output, { recursive: true });
-await fs.mkdir(temp, { recursive: true });
 browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe',
   headless: true,
@@ -20,7 +18,7 @@ browser = await chromium.launch({
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
 const toolsContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
 const page = await context.newPage();
-// Chỉ tạo khoảng dừng để người xem quan sát thao tác thật trong recording.
+// Khoảng dừng giúp DevTools và giao diện ổn định trước screenshot.
 const pause = () => page.waitForTimeout(1200);
 const screenshot = (target, name) => target.screenshot({ path: fileURLToPath(new URL(name, output)) });
 let report;
@@ -85,17 +83,17 @@ try {
   assert.equal(afterDelete.timeOrigin, beforeDelete.timeOrigin);
   await screenshot(devtools, 'devtools-doc-after-delete.png');
   await fs.writeFile(new URL('devtools-doc-after-delete.txt', output), await devtools.locator('body').ariaSnapshot());
-  report = { beforeDelete, afterDelete, dataFile: fixture.dataFile, realUserRuntimeUsed: false, recordedAt: new Date().toISOString(), source: 'Live Google Chrome, Playwright video; actual Chrome DevTools frontend, Network/Doc', browser: await browser.version(), url, keepLog: true, disableCache: true, before, after, reset, checks: { newStudentImmediately: after.studentCount === 41, noNewDocumentRequest: after.docCount === before.docCount, sameDocument: after.timeOrigin === before.timeOrigin, formReset: true }, status: 'PASS' };
+  report = { beforeDelete, afterDelete, dataFile: fixture.dataFile, realUserRuntimeUsed: false, recordedAt: new Date().toISOString(), source: 'Live Google Chrome screenshots/logs; actual Chrome DevTools frontend, Network/Doc; no video recording', browser: await browser.version(), url, keepLog: true, disableCache: true, before, after, reset, checks: { newStudentImmediately: after.studentCount === 41, noNewDocumentRequest: after.docCount === before.docCount, sameDocument: after.timeOrigin === before.timeOrigin, formReset: true }, status: 'PASS' };
 } finally {
   await toolsContext.close();
   await context.close();
-  // Browser đóng sau khi quay phiên riêng, tránh screencast DevTools ảnh hưởng video.
+  // Phiên kiểm tra persistence riêng không quay video.
 
 }
 await fixture.restartBackend({ freshRecording: true });
-const recordingContext = await browser.newContext({ viewport: { width: 1440, height: 1000 }, recordVideo: { dir: fileURLToPath(temp), size: { width: 1440, height: 1000 } } });
+// Không tạo video; MP4 chính thức do người dùng quản lý độc lập.
+const recordingContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
 const recordingPage = await recordingContext.newPage();
-const video = recordingPage.video();
 try {
   await recordingPage.goto(url);
   await recordingPage.waitForFunction(() => document.querySelectorAll('tbody tr').length === 40);
@@ -125,10 +123,9 @@ try {
   await recordingPage.locator('tbody tr').last().scrollIntoViewIfNeeded();
   await screenshot(recordingPage, 'recording-after-f5.png');
   await recordingPage.waitForTimeout(2500);
-  report.recordingSession = { studentsAfterF5: 41, jsonCount: 41, manualRefreshSeparate: true, dataFile: fixture.dataFile, studentsBefore: 40, studentsAfter: await recordingPage.locator('tbody tr').count(), sameDocumentDuringSubmit: true, reset, edited: false };
+  report.recordingSession = { studentsAfterF5: 41, jsonCount: 41, manualRefreshSeparate: true, dataFile: fixture.dataFile, studentsBefore: 40, studentsAfter: await recordingPage.locator('tbody tr').count(), sameDocumentDuringSubmit: true, reset, videoRecorded: false };
 } finally {
   await recordingContext.close();
-  await video.saveAs(fileURLToPath(new URL('add-student-persistence.webm', output)));
   await browser.close();
   await fixture.close();
 }

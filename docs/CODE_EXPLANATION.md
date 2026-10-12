@@ -1,6 +1,6 @@
 # Evidence 4 — Giải thích code do agent tạo
 
-JSON Persistence là mở rộng của nhóm; kiến trúc render vẫn là React CSR.
+JSON Persistence là mở rộng của nhóm; kiến trúc render vẫn là React CSR. Tài liệu này là evidence code explanation theo trang 15, đi kèm sơ đồ, ảnh Network và recording chính thức [add-student.mp4](evidence/add-student.mp4). Phạm vi quan sát video xem EVIDENCE.md; phần giải thích source không tự chứng minh MP4 thể hiện mọi tiêu chí.
 
 ## 1. State owner và khởi tạo
 

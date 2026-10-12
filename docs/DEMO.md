@@ -1,6 +1,6 @@
 # Kịch bản demo khoảng 10 phút
 
-JSON Persistence/Delete là mở rộng theo quyết định nhóm. Bốn tiêu chí Add CSR trong PDF vẫn là trọng tâm.
+JSON Persistence/Delete là mở rộng theo quyết định nhóm. Bốn tiêu chí Add CSR trong PDF vẫn là trọng tâm. Recording chính thức duy nhất là [add-student.mp4](evidence/add-student.mp4), do người dùng quay bằng Chrome/OBS; phạm vi đã xác minh xem EVIDENCE.md. Demo trực tiếp không thay thế việc quan sát video và không yêu cầu quay thêm.
 
 Trước demo: cài dependency, chạy backend + Vite hoặc build + npm start; kiểm tra API. Nếu cần bắt đầu đúng 40 hồ sơ, dùng file test mới theo JSON_PERSISTENCE.md, không reset runtime thật. Chọn email demo chưa tồn tại.
 
