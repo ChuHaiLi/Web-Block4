@@ -38,7 +38,6 @@ Mở http://127.0.0.1:3004. Express phục vụ nguyên HTML shell/assets trong 
 
 ```text
 Block4/
-├── Block4_CSR_Assignment.pdf         # đề gốc, không sửa
 ├── src/
 │   ├── App.jsx                      # owner duy nhất của students
 │   ├── api/students.js               # Fetch GET/POST/DELETE
