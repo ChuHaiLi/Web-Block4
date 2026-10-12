@@ -2,7 +2,7 @@
 
 **Phương án phù hợp với source hiện tại là React CSR + Vite + Express JSON API + JSON Persistence, dùng CSS thuần và model `id`, `name`, `email`, `className`, `major`.** React tạo Student List trong trình duyệt; Express nhận yêu cầu dữ liệu và lưu file. `App` là owner duy nhất của danh sách trong React, còn JSON runtime là nơi lưu bền vững qua F5 và restart backend.
 
-Tài liệu này phân tích hệ thống đã có, không phải đề xuất xây lại Block3. Mẫu Block3 được lưu nguyên nội dung tại [codex_tech_choice_block3.md](codex_tech_choice_block3.md). Chín phần dưới đây giữ cách trình bày giải thích khái niệm, so sánh phương án, phân tích đánh đổi và đối chiếu bằng chứng của mẫu, nhưng áp dụng cho Block4.
+Tài liệu này phân tích kiến trúc và các lựa chọn công nghệ đang được triển khai trong Block4. Chín phần dưới đây giải thích khái niệm, so sánh phương án, phân tích đánh đổi và đối chiếu bằng chứng dựa trên source, tài liệu yêu cầu và kết quả kiểm thử của Block4.
 
 Nguồn đối chiếu: [package.json](package.json), [source React](src/App.jsx), [Express API](server/app.js), [JSON store](server/store.js), [phân tích đề](docs/ANALYSIS.md), [nghiệm thu](docs/ACCEPTANCE.md) và các artifact trong `docs/evidence/json-persistence/`. Phiên bản thư viện dưới đây lấy từ project, không được hiểu là phiên bản mới nhất. Kết quả thực nghiệm là kết quả đã lưu ngày 11/10/2026; phiên soạn tài liệu này không chạy lại build/test hoặc tạo bằng chứng mới.
 
@@ -15,7 +15,7 @@ Nguồn đối chiếu: [package.json](package.json), [source React](src/App.jsx
 | Express | Web framework chạy trên Node.js | Cung cấp GET/POST/DELETE JSON API và phục vụ file build production |
 | Template engine | Công cụ ghép dữ liệu với mẫu để tạo HTML | Block4 không cài EJS/Pug/Handlebars và không dùng `res.render` |
 | CSR — Client-Side Rendering | Kết xuất giao diện bằng JavaScript phía trình duyệt | React nhận JSON rồi tạo Student List |
-| SSR — Server-Side Rendering | Server tạo HTML chứa dữ liệu trước khi trả về | Mô hình tham khảo Block3; không phải cách bảng Block4 được tạo |
+| SSR — Server-Side Rendering | Server tạo HTML chứa dữ liệu trước khi trả về | Mô hình dùng để đối chiếu; không phải cách bảng Block4 được tạo |
 | JSON Persistence | Lưu dữ liệu có cấu trúc xuống file để dùng lại qua phiên | `data/students.json` giữ hồ sơ và bộ đếm MSSV |
 | API — Application Programming Interface | Giao diện trao đổi giữa các phần mềm | Frontend gọi `/api/students` để đọc/thêm/xóa dữ liệu |
 
@@ -23,13 +23,13 @@ HTML là HyperText Markup Language, ngôn ngữ đánh dấu siêu văn bản; J
 
 Việc có backend **không biến ứng dụng thành SSR**. `index.html` chỉ chứa `#root`, thông báo `noscript` và script khởi động. `main.jsx` gọi `createRoot`; `App` bắt đầu với `students=[]`, tải API trong effect và truyền dữ liệu cho bảng. Production Express phục vụ HTML shell/assets có sẵn trong `dist`, không ghép sinh viên vào HTML response.
 
-Theo [đối chiếu PDF](docs/ACCEPTANCE.md), trọng tâm bắt buộc là Student List CSR, dữ liệu mẫu tương ứng bài SSR, controlled form, component/props/state/event và bốn tiêu chí: sinh viên mới xuất hiện; submit không tạo document mới; form reset sau thành công; danh sách có một owner. Bằng chứng gồm sơ đồ component, recording Add, Network trước/sau và mã nguồn để nhóm giải thích; demo khoảng 10 phút cần chỉ rõ owner và so sánh submit với SSR. Cụm “Block 1” trong đề được tài liệu dự án ánh xạ sang Block3.
+Theo [đối chiếu PDF](docs/ACCEPTANCE.md), trọng tâm bắt buộc là Student List CSR, dữ liệu mẫu tương ứng bài SSR, controlled form, component/props/state/event và bốn tiêu chí: sinh viên mới xuất hiện; submit không tạo document mới; form reset sau thành công; danh sách có một owner. Bằng chứng gồm sơ đồ component, recording Add, Network trước/sau và mã nguồn để nhóm giải thích; demo khoảng 10 phút cần chỉ rõ owner và so sánh submit với SSR.
 
 **Delete và JSON Persistence là phần mở rộng đã được nhóm lựa chọn**, không phải yêu cầu bắt buộc của PDF. Mô tả “không cần API/database” trong bài gốc cho phép giải pháp chỉ dùng state; source hiện tại bổ sung API để lưu bền vững. Dự án không có database, localStorage, sửa hồ sơ, tìm kiếm, phân trang hay đăng nhập.
 
 ## 2. So sánh phương án frontend và backend
 
-So sánh cần xuất phát từ mục tiêu chứng minh CSR, khả năng giải thích của nhóm và source đang hoạt động. Template engine của Block3 không thay thế được vai trò của React trong bài này.
+So sánh cần xuất phát từ mục tiêu chứng minh CSR, khả năng giải thích của nhóm và source đang hoạt động. Template engine phục vụ SSR không thay thế được vai trò quản lý state và render giao diện của React trong bài này.
 
 | Phương án | Học và trình bày | Component/state | Lưu qua F5/restart | Đánh đổi | Phù hợp Block4 hiện tại |
 |---|---|---|---|---|---|
@@ -37,7 +37,7 @@ So sánh cần xuất phát từ mục tiêu chứng minh CSR, khả năng giả
 | React + Vite, chỉ state | Ít cấu hình hơn | Đáp ứng trọng tâm React/CSR | Không; state mất khi tải lại | Không thực hiện JSON Persistence hiện tại | Hợp bài gốc, thiếu mở rộng |
 | JavaScript thuần + Fetch + Express | Ít cú pháp mới với nhóm biết DOM | Phải tự tổ chức render và đồng bộ dữ liệu | Có nếu dùng cùng store | Khó minh họa hooks/props; dễ sửa DOM rải rác | Không nên chuyển source sang cách này |
 | Vue + Vite + Express | Template dễ đọc khi đã biết Vue | Có component và cơ chế reactive | Có nếu dùng API | Phải học hệ API khác, viết lại frontend React | Khả thi kỹ thuật, không có lợi cho source hiện tại |
-| Express + EJS | Dễ với HTML/JavaScript | Không có React State điều khiển bảng | Có nếu dùng JSON | Server tạo bảng HTML; form truyền thống điều hướng | Phù hợp bài SSR Block3 |
+| Express + EJS | Dễ với HTML/JavaScript | Không có React State điều khiển bảng | Có nếu dùng JSON | Server tạo bảng HTML; form truyền thống điều hướng | Phù hợp với yêu cầu SSR, không phải trọng tâm CSR |
 
 Các nhận định trong bảng là đánh giá theo phạm vi bài tập và nền tảng nhóm, không phải xếp hạng chất lượng tuyệt đối. Không dùng điểm số giả định để khẳng định benchmark hiệu năng.
 
@@ -80,14 +80,14 @@ Ví dụ hồ sơ trong seed hiện tại:
 }
 ```
 
-Lưu MSSV dưới dạng chuỗi để giữ `0` đầu. Công thức cấp mã trong `createStudent` là `0` + khóa hai chữ số + số thứ tự năm chữ số. Lớp có `cohort="24"` dùng prefix `024`; mã tiếp theo lấy max giữa hồ sơ đang có và counter đã cấp, rồi cộng một. Seed khóa 24 có mã đến `02410010`, nên thêm sinh viên khóa 24 sẽ cấp `02410011`, không chỉ đếm số dòng đang còn.
+Lưu MSSV dưới dạng chuỗi để giữ `0` đầu. Công thức cấp mã trong `createStudent` là `0` + khóa hai chữ số + số thứ tự năm chữ số. Lớp có `cohort="24"` dùng prefix `024`; mã tiếp theo lấy max giữa hồ sơ đang có và counter đã cấp, rồi cộng một. Seed khóa 24 có mã đến `02410010`, nên khi runtime mới khởi tạo từ seed, mã đầu tiên được cấp cho sinh viên khóa 24 là `02410011`. Trong các trạng thái runtime khác, mã tiếp theo phụ thuộc vào hồ sơ và counter đã lưu, không chỉ đếm số dòng đang còn.
 
 Counter được lưu cùng JSON và **không giảm khi xóa**. Xóa mã lớn nhất, xóa hết hồ sơ hoặc restart không làm tái cấp mã đã dùng. Khi số thứ tự đã đạt 99999, khóa đó từ chối thêm; khóa khác vẫn có thể cấp mã. Đây là quy ước ứng dụng phục vụ bài tập, không khẳng định là quy định MSSV chính thức của trường.
 
 | Model | Lợi ích | Hạn chế/chi phí | Quyết định |
 |---|---|---|---|
 | Tối giản: `id`, `name`, `email` | Bám ba trường trọng tâm đề | Không biểu diễn lớp/ngành hoặc suy khóa theo lớp | Không phải source hiện tại |
-| **Hiện tại: năm trường** | Gần model Block3, form ngắn, ngành nhất quán với lớp | ID gắn quy ước MSSV; danh mục phải được bảo trì | Giữ nguyên |
+| **Hiện tại: năm trường** | Biểu diễn đầy đủ lớp/ngành, form ngắn, ngành nhất quán với lớp | ID gắn quy ước MSSV; danh mục phải được bảo trì | Giữ nguyên |
 | Mở rộng: thêm ID kỹ thuật, ngày nhập học, trạng thái học vụ | Hỗ trợ nghiệp vụ phức tạp hơn | Đổi schema, API, UI, migration và test | Chưa cần |
 
 Danh mục thực tế có **10 lớp và 4 ngành**: `CNTT` — Công nghệ thông tin; `KHDL` — Khoa học dữ liệu; `TOAN` — Toán học; `VL` — Vật lý. Có các lựa chọn `24C11` và `24CNTT` bên cạnh các lớp dùng trong seed. Lớp sinh hoạt là lớp quản lý hành chính, không phải lớp học phần. Không thêm dữ liệu cá nhân như căn cước, địa chỉ hoặc gia đình vì không phục vụ luồng hiện có.
@@ -111,7 +111,7 @@ Hàm dùng chung nằm trong [src/utils/student.js](src/utils/student.js). `vali
 
 NFC là Normalization Form C, dạng chuẩn hóa Unicode tổ hợp. `"  Nguyễn   Thị Ánh  "` được lưu thành `"Nguyễn Thị Ánh"`. Tên có dấu nháy hoặc gạch nối không bị một regex chỉ chữ cái loại bỏ. Tuy nhiên, hàm hiện tại không phải bộ kiểm tra toàn bộ ký tự điều khiển; giới hạn 100 dùng `.length`, không đếm grapheme hiển thị. Không mô tả những kiểm tra chưa có như đã triển khai.
 
-Email được lưu với cách viết sau trim, **không tự chuyển tên miền hoặc toàn bộ địa chỉ sang chữ thường**. Chỉ phép so sánh trùng dùng chữ thường theo chính sách ứng dụng. Regex hiện tại là kiểm tra đơn giản: không bảo đảm toàn bộ chuẩn email, không kiểm tra hộp thư tồn tại, và không có các luật riêng về dấu chấm ở local part hay dấu gạch nối ở nhãn domain. Những luật chặt hơn trong mẫu Block3 không phải hành vi của source này.
+Email được lưu với cách viết sau trim, **không tự chuyển tên miền hoặc toàn bộ địa chỉ sang chữ thường**. Chỉ phép so sánh trùng dùng chữ thường theo chính sách ứng dụng. Regex hiện tại là kiểm tra đơn giản: không bảo đảm toàn bộ chuẩn email, không kiểm tra hộp thư tồn tại, và không có các luật riêng về dấu chấm ở local part hay dấu gạch nối ở nhãn domain. Không khẳng định các quy tắc kiểm tra email chặt hơn đã được triển khai.
 
 `AddStudentForm` có `required`, `maxLength`, `type="email"` nhưng form dùng `noValidate`, nên thông báo submit dựa vào validation JavaScript dùng chung thay vì hộp báo lỗi native. Lỗi đang hiển thị chung bằng `role="alert"`; chưa có hệ thống lỗi riêng cho từng field hoặc tự focus field lỗi.
 
@@ -148,7 +148,7 @@ Mảng rỗng với counter hợp lệ là trạng thái có thể tồn tại s
 
 | Cách lưu | Qua F5 | Qua backend restart | Chi phí và giới hạn |
 |---|---|---|---|
-| React State | Không | Không | Đơn giản, phù hợp demo CSR cơ bản |
+| React State | Không | Restart riêng backend không tự xóa state đang có trong tab trình duyệt | Không phải dữ liệu lưu bền vững; đơn giản, phù hợp demo CSR cơ bản |
 | localStorage | Có trong cùng trình duyệt | Không phụ thuộc backend | Không có kho chung; client có thể sửa; không dùng trong source |
 | **JSON file backend** | Có, khi GET lại | Có | Dễ xem dữ liệu; tự lo schema, duy nhất và ghi đồng thời |
 | SQLite/database | Có | Có | Có cơ chế lưu/giao dịch chuyên biệt, nhưng đổi triển khai và test |
@@ -171,7 +171,7 @@ DELETE cũng đọc–validate–lọc–lưu trong hàng đợi, giữ nguyên 
 
 | Sự cố | Xử lý thực tế/giới hạn |
 |---|---|
-| File chưa tồn tại lúc khởi động | Tạo từ 40 seed; không lấy runtime Block3 |
+| File chưa tồn tại lúc khởi động | Tạo từ 40 hồ sơ seed của dự án |
 | File đã có/rỗng hợp lệ | Giữ dữ liệu và counters; không overwrite bằng seed |
 | Runtime hỏng lúc startup | Không mở server thành công; giữ bytes để khôi phục |
 | Runtime hỏng giữa phiên | API lỗi; frontend không giả vờ tải seed |
@@ -182,7 +182,7 @@ DELETE cũng đọc–validate–lọc–lưu trong hàng đợi, giữ nguyên 
 
 `STUDENT_DATA_FILE` là cấu hình khởi động, không phải trường API. `resolveDataFile` giới hạn đường dẫn `.json` trong `data/` hoặc `.tools/test-data/` của project. Runtime và file tạm được `.gitignore`; seed/danh mục vẫn là source theo dõi bằng Git. Không có endpoint reset. Hướng dẫn backup/khôi phục và demo bằng file test riêng nằm trong [JSON_PERSISTENCE.md](docs/JSON_PERSISTENCE.md).
 
-**Bộ mẫu hiện tại có 40 sinh viên:** 20 thuộc khóa 24, 10 khóa 25, 10 khóa 26; bốn ngành có 10 hồ sơ mỗi ngành. ID/email duy nhất; email thuộc `example.com`; họ tên có dấu. Đây là dữ liệu giả lập. File seed là nguồn chuẩn, không chép bảng đề xuất `seed-001` của mẫu Block3 sang project; mã hiện tại là MSSV tám chữ số. Danh mục có 10 lớp nhưng seed dùng 8 lớp; hai lớp bổ sung vẫn được phép chọn khi thêm.
+**Bộ mẫu hiện tại có 40 sinh viên:** 20 thuộc khóa 24, 10 khóa 25, 10 khóa 26; bốn ngành có 10 hồ sơ mỗi ngành. ID/email duy nhất; email thuộc `example.com`; họ tên có dấu. Đây là dữ liệu giả lập. File seed là nguồn dữ liệu khởi tạo chuẩn; mã sinh viên hiện tại là MSSV tám chữ số. Danh mục có 10 lớp nhưng seed dùng 8 lớp; hai lớp bổ sung vẫn được phép chọn khi thêm.
 
 ## 6. Giao diện UI/UX
 
@@ -243,8 +243,7 @@ Web-Block4/
 ├── vite.config.js
 ├── package.json, package-lock.json
 ├── README.md, .gitignore
-├── codex_tech_choice_block3.md       # mẫu giữ nguyên
-└── codex_tech_choice.md              # phân tích Block4 này
+└── codex_tech_choice_block4.md       # phân tích công nghệ Block4
 ```
 
 `dist/` và `node_modules/` là output build/dependency, được gitignore. `data/students.json` chỉ có khi backend khởi tạo runtime; sơ đồ không khẳng định file đó đã tồn tại trong workspace chưa chạy backend.
@@ -306,11 +305,11 @@ flowchart TD
 
 Spread và `filter` tạo mảng mới; không dùng `push`/`splice` để sửa state trực tiếp. Functional updater nhận state gần nhất khi response đến. Cách cập nhật này phù hợp [hướng dẫn React về immutable array state](https://react.dev/learn/updating-arrays-in-state).
 
-| Điểm so sánh | Block3 SSR tham khảo | Block4 CSR hiện tại |
+| Điểm so sánh | Ví dụ SSR sử dụng Express + EJS | Block4 CSR hiện tại |
 |---|---|---|
 | Nơi tạo bảng | Server render EJS thành HTML | React render trong trình duyệt |
 | Response ban đầu | HTML đã chứa hồ sơ | Shell, rồi GET JSON |
-| Submit thêm | POST form → 303 → GET trang | `preventDefault` → Fetch POST → 201 JSON → state |
+| Submit thêm | Ví dụ PRG: POST form → 303 → GET trang | `preventDefault` → Fetch POST → 201 JSON → state |
 | Network khi thêm | Có document navigation theo luồng form | Fetch/XHR tăng, Doc không tăng trong submit |
 | Khi F5 | Server render lại HTML từ kho | App mới gọi GET runtime rồi render |
 | JavaScript tắt | SSR có thể cung cấp bảng/form truyền thống | Block4 cần JavaScript; có noscript hướng dẫn |
@@ -356,7 +355,7 @@ Chỉ giữ một recording chính thức là `docs/evidence/add-student.mp4`. W
 
 ## 9. Quyết định hiện tại và hướng mở rộng
 
-Các lựa chọn cốt lõi đã được thể hiện trong source và được dùng làm căn cứ của tài liệu này; không cần quay lại bước chờ lựa chọn công nghệ của mẫu Block3.
+Các lựa chọn cốt lõi đã được thể hiện trong source Block4 và được dùng làm căn cứ của tài liệu này, thay vì trình bày như các phương án còn chờ triển khai.
 
 | Quyết định | Phương án hiện tại | Lý do/đánh đổi |
 |---|---|---|
@@ -374,4 +373,4 @@ Các lựa chọn cốt lõi đã được thể hiện trong source và đượ
 
 Nếu mở rộng thực tế, thứ tự ưu tiên là: lỗi theo field và kiểm thử accessibility; đồng bộ nhiều tab/refetch khi xung đột; backup/khôi phục được kiểm tra; chuyển database khi cần nhiều writer hoặc dữ liệu lớn; xác thực/phân quyền khi triển khai phục vụ người dùng ngoài local. Mỗi bước làm thay đổi phạm vi, API hoặc cách vận hành và cần thiết kế riêng; tài liệu không khẳng định các tính năng đó đã có.
 
-Đối với bài tập hiện tại, nhóm cần giải thích được ba mối quan hệ: **state → props → UI; event → callback → owner; API ack sau lưu → immutable state update**. Khi so với Block3, hãy dùng HTML response và Network Doc để chỉ ra nơi tạo bảng và cách submit, rồi dùng JSON/F5/restart để chứng minh persistence là vấn đề khác với rendering. [DEMO.md](docs/DEMO.md) và [CODE_EXPLANATION.md](docs/CODE_EXPLANATION.md) cung cấp kịch bản và phần mã cần trình bày.
+Đối với bài tập hiện tại, nhóm cần giải thích được ba mối quan hệ: **state → props → UI; event → callback → owner; API ack sau lưu → immutable state update**. Khi so với mô hình SSR, hãy dùng HTML response và Network Doc để chỉ ra nơi tạo bảng và cách submit, rồi dùng JSON/F5/restart để chứng minh persistence là vấn đề khác với rendering. [DEMO.md](docs/DEMO.md) và [CODE_EXPLANATION.md](docs/CODE_EXPLANATION.md) cung cấp kịch bản và phần mã cần trình bày.
