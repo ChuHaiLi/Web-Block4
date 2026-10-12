@@ -216,7 +216,6 @@ Nếu phát triển tiếp, lỗi riêng tại field và focus field lỗi là c
 
 ```text
 Web-Block4/
-├── Block4_CSR_Assignment.pdf
 ├── index.html                       # HTML shell, root và script
 ├── src/
 │   ├── main.jsx                     # createRoot, StrictMode, CSS
